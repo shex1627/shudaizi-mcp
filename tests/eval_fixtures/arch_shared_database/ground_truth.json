@@ -1,0 +1,13 @@
+{
+  "task_type": "architecture_review",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "Distributed monolith: two services share a global database connection. OrderService directly modifies inventory tables. InventoryService queries order_items — crossing service boundaries via shared database.",
+  "expected_findings": [
+    {
+      "id": "shared_database",
+      "keywords": ["shared database", "distributed monolith", "coupling", "service boundar", "separate", "own database"]
+    }
+  ],
+  "false_positive_keywords": []
+}

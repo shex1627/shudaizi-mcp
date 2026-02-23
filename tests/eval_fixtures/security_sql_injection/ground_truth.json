@@ -1,0 +1,13 @@
+{
+  "task_type": "security_audit",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "Two SQL injection vulnerabilities: f-string interpolation and string concatenation in queries.",
+  "expected_findings": [
+    {
+      "id": "sql_injection",
+      "keywords": ["sql injection", "string concatenation", "parameterized", "interpolat"]
+    }
+  ],
+  "false_positive_keywords": []
+}

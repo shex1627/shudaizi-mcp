@@ -1,0 +1,13 @@
+{
+  "task_type": "security_audit",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "IDOR: both GET and DELETE endpoints fetch/modify orders by ID without checking that the authenticated user owns the order.",
+  "expected_findings": [
+    {
+      "id": "idor",
+      "keywords": ["IDOR", "authorization", "ownership", "privilege", "resource-level", "horizontal"]
+    }
+  ],
+  "false_positive_keywords": []
+}

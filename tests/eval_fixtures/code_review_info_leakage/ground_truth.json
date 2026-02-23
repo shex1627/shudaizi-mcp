@@ -1,0 +1,13 @@
+{
+  "task_type": "code_review",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "Information leakage: identical date-parsing logic (same formats list, same try/except loop) duplicated across three modules. This is DRY violation at the knowledge level — a change to supported date formats requires updating three places.",
+  "expected_findings": [
+    {
+      "id": "info_leakage",
+      "keywords": ["duplicat", "DRY", "leakage", "repeated", "shared", "extract", "common", "single source"]
+    }
+  ],
+  "false_positive_keywords": []
+}

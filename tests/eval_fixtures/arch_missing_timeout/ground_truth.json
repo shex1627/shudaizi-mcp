@@ -1,0 +1,13 @@
+{
+  "task_type": "architecture_review",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "No timeout parameter on httpx.Client or any individual request. A slow/hung payment service will block indefinitely.",
+  "expected_findings": [
+    {
+      "id": "missing_timeout",
+      "keywords": ["timeout", "connection", "hung", "indefinite", "block"]
+    }
+  ],
+  "false_positive_keywords": []
+}

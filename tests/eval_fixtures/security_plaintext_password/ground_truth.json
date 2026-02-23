@@ -1,0 +1,13 @@
+{
+  "task_type": "security_audit",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "Passwords stored and compared in plaintext. Should use bcrypt/scrypt/argon2.",
+  "expected_findings": [
+    {
+      "id": "plaintext_password",
+      "keywords": ["plaintext", "plain text", "hash", "bcrypt", "argon2", "scrypt"]
+    }
+  ],
+  "false_positive_keywords": []
+}

@@ -1,0 +1,13 @@
+{
+  "task_type": "code_review",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "CQS violations: get_total() mutates state (applies discounts) while appearing to be a query. remove_item() both mutates and returns state.",
+  "expected_findings": [
+    {
+      "id": "cqs_violation",
+      "keywords": ["command", "query", "CQS", "side effect", "mutate", "return"]
+    }
+  ],
+  "false_positive_keywords": []
+}

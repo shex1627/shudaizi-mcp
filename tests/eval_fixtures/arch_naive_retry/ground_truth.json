@@ -1,0 +1,13 @@
+{
+  "task_type": "architecture_review",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "Retry loop with no exponential backoff, no jitter, no delay between retries. Will cause thundering herd on failures. Also no timeout on requests.",
+  "expected_findings": [
+    {
+      "id": "naive_retry",
+      "keywords": ["backoff", "exponential", "jitter", "retry", "thundering herd", "delay"]
+    }
+  ],
+  "false_positive_keywords": []
+}

@@ -1,0 +1,13 @@
+{
+  "task_type": "architecture_review",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "Every query fetches unbounded result sets with no LIMIT, no pagination, no cursor. A user with millions of events will cause OOM. export_all_data loads entire tables into memory.",
+  "expected_findings": [
+    {
+      "id": "unbounded_query",
+      "keywords": ["unbounded", "pagination", "LIMIT", "cursor", "memory", "OOM", "result set"]
+    }
+  ],
+  "false_positive_keywords": []
+}

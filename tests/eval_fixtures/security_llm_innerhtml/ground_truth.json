@@ -1,0 +1,13 @@
+{
+  "task_type": "security_audit",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "LLM output piped directly to innerHTML without sanitization — XSS vector via indirect prompt injection.",
+  "expected_findings": [
+    {
+      "id": "llm_xss",
+      "keywords": ["innerHTML", "XSS", "sanitiz", "escap", "injection", "LLM output", "textContent"]
+    }
+  ],
+  "false_positive_keywords": []
+}

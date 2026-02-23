@@ -1,0 +1,17 @@
+{
+  "task_type": "code_review",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "Synchronous requests.get/post and time.sleep inside async functions, blocking the event loop. Also sequential iteration instead of asyncio.gather.",
+  "expected_findings": [
+    {
+      "id": "blocking_in_async",
+      "keywords": ["blocking", "requests", "synchronous", "async", "event loop", "httpx", "aiohttp"]
+    },
+    {
+      "id": "sequential_awaits",
+      "keywords": ["sequential", "gather", "concurrent", "TaskGroup", "parallel"]
+    }
+  ],
+  "false_positive_keywords": []
+}

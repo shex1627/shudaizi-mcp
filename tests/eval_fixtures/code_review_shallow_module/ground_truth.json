@@ -1,0 +1,13 @@
+{
+  "task_type": "code_review",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "Three-layer architecture where UserService and UserController are shallow modules — they add interfaces without absorbing any complexity. Every method is a trivial pass-through delegation.",
+  "expected_findings": [
+    {
+      "id": "shallow_module",
+      "keywords": ["shallow", "pass-through", "wrapper", "thin", "delegation", "no logic", "complexity"]
+    }
+  ],
+  "false_positive_keywords": []
+}
