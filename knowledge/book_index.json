@@ -1,0 +1,365 @@
+{
+  "version": 1,
+  "updated": "2026-02-22",
+  "books": {
+    "01": {
+      "title": "Designing Data-Intensive Applications",
+      "author": "Martin Kleppmann",
+      "year": 2017,
+      "category": "Architecture & System Design",
+      "file": "book_research/01_designing_data_intensive_applications.md"
+    },
+    "02": {
+      "title": "Fundamentals of Software Architecture",
+      "author": "Mark Richards & Neal Ford",
+      "year": 2020,
+      "category": "Architecture & System Design",
+      "file": "book_research/02_fundamentals_of_software_architecture.md"
+    },
+    "03": {
+      "title": "Software Architecture: The Hard Parts",
+      "author": "Neal Ford, Mark Richards, Pramod Sadalage & Zhamak Dehghani",
+      "year": 2021,
+      "category": "Architecture & System Design",
+      "file": "book_research/03_software_architecture_hard_parts.md"
+    },
+    "04": {
+      "title": "Clean Architecture",
+      "author": "Robert C. Martin",
+      "year": 2017,
+      "category": "Architecture & System Design",
+      "file": "book_research/04_clean_architecture.md"
+    },
+    "05": {
+      "title": "Building Microservices",
+      "author": "Sam Newman",
+      "year": 2021,
+      "category": "Architecture & System Design",
+      "file": "book_research/05_building_microservices.md"
+    },
+    "06": {
+      "title": "A Philosophy of Software Design",
+      "author": "John Ousterhout",
+      "year": 2018,
+      "category": "Architecture & System Design",
+      "file": "book_research/06_philosophy_of_software_design.md"
+    },
+    "07": {
+      "title": "The Web Application Hacker's Handbook",
+      "author": "Dafydd Stuttard & Marcus Pinto",
+      "year": 2011,
+      "category": "Security",
+      "file": "book_research/07_web_application_hackers_handbook.md"
+    },
+    "08": {
+      "title": "The LLM Security Playbook",
+      "author": "Steve Wilson",
+      "year": 2024,
+      "category": "Security",
+      "file": "book_research/08_llm_security_playbook.md"
+    },
+    "09": {
+      "title": "AI Engineering",
+      "author": "Chip Huyen",
+      "year": 2025,
+      "category": "LLM / AI Engineering",
+      "file": "book_research/09_ai_engineering_chip_huyen.md"
+    },
+    "10": {
+      "title": "Designing Machine Learning Systems",
+      "author": "Chip Huyen",
+      "year": 2022,
+      "category": "LLM / AI Engineering",
+      "file": "book_research/10_designing_ml_systems.md"
+    },
+    "11": {
+      "title": "The LLM Engineer's Handbook",
+      "author": "Paul Iusztin & Maxime Labonne",
+      "year": 2024,
+      "category": "LLM / AI Engineering",
+      "file": "book_research/11_llm_engineers_handbook.md"
+    },
+    "12": {
+      "title": "Unit Testing: Principles, Practices, and Patterns",
+      "author": "Vladimir Khorikov",
+      "year": 2020,
+      "category": "Testing",
+      "file": "book_research/12_unit_testing_khorikov.md"
+    },
+    "13": {
+      "title": "Growing Object-Oriented Software, Guided by Tests",
+      "author": "Steve Freeman & Nat Pryce",
+      "year": 2009,
+      "category": "Testing",
+      "file": "book_research/13_growing_oo_software_guided_by_tests.md"
+    },
+    "14": {
+      "title": "The Pragmatic Programmer",
+      "author": "David Thomas & Andrew Hunt",
+      "year": 2019,
+      "category": "Engineering Best Practices",
+      "file": "book_research/14_pragmatic_programmer.md"
+    },
+    "15": {
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "year": 2008,
+      "category": "Engineering Best Practices",
+      "file": "book_research/15_clean_code.md"
+    },
+    "16": {
+      "title": "Refactoring: Improving the Design of Existing Code",
+      "author": "Martin Fowler",
+      "year": 2018,
+      "category": "Engineering Best Practices",
+      "file": "book_research/16_refactoring_fowler.md"
+    },
+    "17": {
+      "title": "Release It! Design and Deploy Production-Ready Software",
+      "author": "Michael Nygard",
+      "year": 2018,
+      "category": "Observability, Reliability & DevOps",
+      "file": "book_research/17_release_it.md"
+    },
+    "18": {
+      "title": "Observability Engineering",
+      "author": "Charity Majors, Liz Fong-Jones & George Miranda",
+      "year": 2022,
+      "category": "Observability, Reliability & DevOps",
+      "file": "book_research/18_observability_engineering.md"
+    },
+    "19": {
+      "title": "Site Reliability Engineering",
+      "author": "Betsy Beyer, Chris Jones, Jennifer Petoff & Niall Richard Murphy (Google)",
+      "year": 2016,
+      "category": "Observability, Reliability & DevOps",
+      "file": "book_research/19_site_reliability_engineering.md"
+    },
+    "20": {
+      "title": "API Design Patterns",
+      "author": "JJ Geewax",
+      "year": 2021,
+      "category": "Data Modeling & APIs",
+      "file": "book_research/20_api_design_patterns.md"
+    },
+    "21": {
+      "title": "Database Internals",
+      "author": "Alex Petrov",
+      "year": 2019,
+      "category": "Data Modeling & APIs",
+      "file": "book_research/21_database_internals.md"
+    },
+    "22": {
+      "title": "Python Concurrency with asyncio",
+      "author": "Matthew Fowler",
+      "year": 2022,
+      "category": "Concurrency & Async",
+      "file": "book_research/22_python_concurrency_asyncio.md"
+    },
+    "23": {
+      "title": "The Design of Everyday Things",
+      "author": "Don Norman",
+      "year": 2013,
+      "category": "UX & Interaction Design",
+      "file": "book_research/23_design_of_everyday_things.md"
+    },
+    "24": {
+      "title": "Don't Make Me Think",
+      "author": "Steve Krug",
+      "year": 2014,
+      "category": "UX & Interaction Design",
+      "file": "book_research/24_dont_make_me_think.md"
+    },
+    "25": {
+      "title": "Laws of UX",
+      "author": "Jon Yablonski",
+      "year": 2020,
+      "category": "UX & Interaction Design",
+      "file": "book_research/25_laws_of_ux.md"
+    },
+    "26": {
+      "title": "Storytelling with Data",
+      "author": "Cole Nussbaumer Knaflic",
+      "year": 2015,
+      "category": "Data Visualization",
+      "file": "book_research/26_storytelling_with_data.md"
+    },
+    "27": {
+      "title": "The Visual Display of Quantitative Information",
+      "author": "Edward Tufte",
+      "year": 2001,
+      "category": "Data Visualization",
+      "file": "book_research/27_visual_display_quantitative_info.md"
+    },
+    "28": {
+      "title": "Fundamentals of Data Visualization",
+      "author": "Claus O. Wilke",
+      "year": 2019,
+      "category": "Data Visualization",
+      "file": "book_research/28_fundamentals_data_visualization.md"
+    },
+    "29": {
+      "title": "Inspired: How to Create Tech Products Customers Love",
+      "author": "Marty Cagan",
+      "year": 2018,
+      "category": "Product Strategy",
+      "file": "book_research/29_inspired_cagan.md"
+    },
+    "30": {
+      "title": "Shape Up: Stop Running in Circles and Ship Work that Matters",
+      "author": "Ryan Singer",
+      "year": 2019,
+      "category": "Product Strategy",
+      "file": "book_research/30_shape_up.md"
+    },
+    "31": {
+      "title": "Continuous Discovery Habits",
+      "author": "Teresa Torres",
+      "year": 2021,
+      "category": "Product Strategy",
+      "file": "book_research/31_continuous_discovery_habits.md"
+    },
+    "32": {
+      "title": "The DevOps Handbook",
+      "author": "Gene Kim, Jez Humble, Patrick Debois & John Willis",
+      "year": 2016,
+      "category": "DevOps & Release",
+      "file": "book_research/32_devops_handbook.md"
+    },
+    "33": {
+      "title": "Anthropic Engineering Blog (Consolidated)",
+      "author": "Anthropic",
+      "year": 2026,
+      "category": "LLM / AI Engineering — Anthropic-Specific",
+      "file": "book_research/33_anthropic_engineering_blog.md"
+    }
+  },
+  "articles": {
+    "a01": {
+      "title": "Building Effective Agents",
+      "date": "2024-12-19",
+      "category": "Agent Design & Architecture",
+      "file": "book_research/anthropic_articles/01_building_effective_agents.md"
+    },
+    "a02": {
+      "title": "How We Built Our Multi-Agent Research System",
+      "date": "2025-06-13",
+      "category": "Agent Design & Architecture",
+      "file": "book_research/anthropic_articles/02_multi_agent_research_system.md"
+    },
+    "a03": {
+      "title": "Building Agents with the Claude Agent SDK",
+      "date": "2025-09-29",
+      "category": "Agent Design & Architecture",
+      "file": "book_research/anthropic_articles/03_agent_sdk.md"
+    },
+    "a04": {
+      "title": "Effective Harnesses for Long-Running Agents",
+      "date": "2025-11-26",
+      "category": "Agent Design & Architecture",
+      "file": "book_research/anthropic_articles/04_long_running_agents.md"
+    },
+    "a05": {
+      "title": "Effective Context Engineering for AI Agents",
+      "date": "2025-09-29",
+      "category": "Context Engineering",
+      "file": "book_research/anthropic_articles/05_context_engineering.md"
+    },
+    "a06": {
+      "title": "Writing Effective Tools for Agents",
+      "date": "2025-09-11",
+      "category": "Tool Design & MCP",
+      "file": "book_research/anthropic_articles/06_writing_effective_tools.md"
+    },
+    "a07": {
+      "title": "Introducing Advanced Tool Use",
+      "date": "2025-11-24",
+      "category": "Tool Design & MCP",
+      "file": "book_research/anthropic_articles/07_advanced_tool_use.md"
+    },
+    "a08": {
+      "title": "Code Execution with MCP",
+      "date": "2025-11-04",
+      "category": "Tool Design & MCP",
+      "file": "book_research/anthropic_articles/08_code_execution_mcp.md"
+    },
+    "a09": {
+      "title": "The Think Tool",
+      "date": "2025-03-20",
+      "category": "Tool Design & MCP",
+      "file": "book_research/anthropic_articles/09_think_tool.md"
+    },
+    "a10": {
+      "title": "Agent Skills",
+      "date": "2025-12-18",
+      "category": "Tool Design & MCP",
+      "file": "book_research/anthropic_articles/10_agent_skills.md"
+    },
+    "a11": {
+      "title": "Demystifying Evals for AI Agents",
+      "date": "2026-01-09",
+      "category": "Evaluation & Testing",
+      "file": "book_research/anthropic_articles/11_demystifying_evals.md"
+    },
+    "a12": {
+      "title": "Quantifying Infrastructure Noise in Agentic Coding Evals",
+      "date": "2026-02-01",
+      "category": "Evaluation & Testing",
+      "file": "book_research/anthropic_articles/12_infrastructure_noise.md"
+    },
+    "a13": {
+      "title": "Designing AI-Resistant Technical Evaluations",
+      "date": "2026-01-21",
+      "category": "Evaluation & Testing",
+      "file": "book_research/anthropic_articles/13_ai_resistant_evaluations.md"
+    },
+    "a14": {
+      "title": "Beyond Permission Prompts: Claude Code Sandboxing",
+      "date": "2025-10-20",
+      "category": "Production & Security",
+      "file": "book_research/anthropic_articles/14_sandboxing.md"
+    },
+    "a15": {
+      "title": "A Postmortem of Three Recent Issues",
+      "date": "2025-09-17",
+      "category": "Production & Security",
+      "file": "book_research/anthropic_articles/15_postmortem.md"
+    },
+    "a16": {
+      "title": "Building a C Compiler with a Team of Parallel Claudes",
+      "date": "2026-02-05",
+      "category": "Production & Security",
+      "file": "book_research/anthropic_articles/16_parallel_c_compiler.md"
+    },
+    "a17": {
+      "title": "Introducing Contextual Retrieval",
+      "date": "2024-09-19",
+      "category": "RAG & Retrieval",
+      "file": "book_research/anthropic_articles/17_contextual_retrieval.md"
+    },
+    "a18": {
+      "title": "Raising the Bar on SWE-bench Verified",
+      "date": "2025-01-06",
+      "category": "Benchmarks & Best Practices",
+      "file": "book_research/anthropic_articles/18_swe_bench.md"
+    },
+    "a19": {
+      "title": "Desktop Extensions: One-Click MCP Installation",
+      "date": "2025-06-26",
+      "category": "Tool Design & MCP",
+      "file": "book_research/anthropic_articles/19_desktop_extensions.md"
+    },
+    "a20": {
+      "title": "Claude Code: Best Practices for Agentic Coding",
+      "date": "2025-04-18",
+      "category": "Benchmarks & Best Practices",
+      "file": "book_research/anthropic_articles/20_claude_code_best_practices.md"
+    },
+    "a21": {
+      "title": "Claude 4.6 Prompting Best Practices",
+      "date": "2026-02-01",
+      "category": "Benchmarks & Best Practices",
+      "file": "book_research/anthropic_articles/21_claude_4_best_practices.md"
+    }
+  }
+}
