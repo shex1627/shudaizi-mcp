@@ -46,23 +46,36 @@ def get_checklist_version(checklist_path: Path) -> tuple[int, str]:
     return version, updated
 
 
+def estimate_tokens(text: str) -> int:
+    """Rough token estimate: ~4 chars per token."""
+    return len(text) // 4
+
+
+TOKEN_BUDGET = 6000  # target max tokens for standard-detail checklists
+
+
 def check_staleness() -> list[dict]:
-    """Check each checklist against its source files for staleness."""
+    """Check each checklist against its source files for staleness and size."""
     routing = load_routing()
     results = []
 
     for task_type, info in routing["tasks"].items():
-        checklist_path = PROJECT_ROOT / "knowledge" / info["checklist_file"]
+        checklist_path = PROJECT_ROOT / "knowledge" / "checklists" / f"{task_type}.md"
         if not checklist_path.exists():
             results.append({
                 "task": task_type,
                 "status": "MISSING",
-                "message": f"Checklist file does not exist: {info['checklist_file']}",
+                "message": f"Checklist file does not exist: checklists/{task_type}.md",
             })
             continue
 
         checklist_mtime = checklist_path.stat().st_mtime
         version, updated = get_checklist_version(checklist_path)
+
+        # Check size
+        content = checklist_path.read_text()
+        est_tokens = estimate_tokens(content)
+        size_warning = est_tokens > TOKEN_BUDGET
 
         all_sources = (
             info.get("primary_sources", [])
@@ -77,22 +90,25 @@ def check_staleness() -> list[dict]:
                 stale_sources.append(source_id)
 
         if stale_sources:
-            results.append({
-                "task": task_type,
-                "status": "STALE",
-                "version": version,
-                "updated": updated,
-                "stale_sources": stale_sources,
-                "message": f"Sources newer than checklist: {', '.join(stale_sources)}",
-            })
+            status = "STALE"
+            message = f"Sources newer than checklist: {', '.join(stale_sources)}"
         else:
-            results.append({
-                "task": task_type,
-                "status": "OK",
-                "version": version,
-                "updated": updated,
-                "message": "Up to date",
-            })
+            status = "OK"
+            message = "Up to date"
+
+        if size_warning:
+            message += f" | OVERSIZED: ~{est_tokens} tokens (budget: {TOKEN_BUDGET})"
+
+        results.append({
+            "task": task_type,
+            "status": status,
+            "version": version,
+            "updated": updated,
+            "est_tokens": est_tokens,
+            "oversized": size_warning,
+            "message": message,
+            **({"stale_sources": stale_sources} if stale_sources else {}),
+        })
 
     return results
 
@@ -104,9 +120,10 @@ def main() -> None:
     missing = [r for r in results if r["status"] == "MISSING"]
     stale = [r for r in results if r["status"] == "STALE"]
     ok = [r for r in results if r["status"] == "OK"]
+    oversized = [r for r in results if r.get("oversized")]
 
     print(f"\n{'='*60}")
-    print(f"  Shudaizi Checklist Staleness Report")
+    print(f"  Shudaizi Checklist Staleness & Size Report")
     print(f"{'='*60}\n")
 
     if missing:
@@ -121,11 +138,18 @@ def main() -> None:
             print(f"  - {r['task']} (v{r['version']}, {r['updated']}): {r['message']}")
         print()
 
+    if oversized:
+        print(f"OVERSIZED ({len(oversized)}):")
+        for r in oversized:
+            print(f"  - {r['task']}: ~{r['est_tokens']} tokens (budget: {TOKEN_BUDGET})")
+        print()
+
     print(f"OK ({len(ok)}):")
     for r in ok:
-        print(f"  - {r['task']} (v{r['version']}, {r['updated']})")
+        token_info = f", ~{r['est_tokens']}tok" if "est_tokens" in r else ""
+        print(f"  - {r['task']} (v{r['version']}, {r['updated']}{token_info})")
 
-    print(f"\nTotal: {len(ok)} ok, {len(stale)} stale, {len(missing)} missing")
+    print(f"\nTotal: {len(ok)} ok, {len(stale)} stale, {len(missing)} missing, {len(oversized)} oversized")
 
 
 if __name__ == "__main__":

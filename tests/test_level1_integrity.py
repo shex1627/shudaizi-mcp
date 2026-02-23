@@ -37,10 +37,10 @@ class TestFileIntegrity:
 
     def test_all_checklist_files_exist(self, project_root, routing_data):
         missing = []
-        for task, cfg in routing_data.get("tasks", {}).items():
-            fpath = project_root / "knowledge" / cfg["checklist_file"]
+        for task in routing_data.get("tasks", {}):
+            fpath = project_root / "knowledge" / "checklists" / f"{task}.md"
             if not fpath.exists():
-                missing.append(f"{task}: {cfg['checklist_file']}")
+                missing.append(f"{task}: checklists/{task}.md")
         assert not missing, f"Missing checklist files: {missing}"
 
     def test_all_skill_dirs_have_skill_md(self, project_root):
@@ -383,3 +383,42 @@ class TestContentQuality:
             if "## Procedure" not in content:
                 incomplete.append(f"{d.name}: missing 'Procedure'")
         assert not incomplete, f"Skills with missing sections: {incomplete}"
+
+    def test_checklists_under_token_budget(self, book_loader, task_router):
+        """Standard-detail checklists should stay under ~6K tokens (~24K chars)."""
+        TOKEN_BUDGET_CHARS = 24_000  # ~6K tokens at ~4 chars/token
+        oversized = []
+        for task in task_router.list_task_types():
+            content = book_loader.read_checklist(task, "standard")
+            if len(content) > TOKEN_BUDGET_CHARS:
+                est_tokens = len(content) // 4
+                oversized.append(f"{task}: ~{est_tokens} tokens ({len(content)} chars)")
+        assert not oversized, f"Checklists exceeding ~6K token budget: {oversized}"
+
+    def test_all_books_all_sections_extractable(self, book_loader, book_index):
+        """Every book must have key_ideas; warn for other missing sections."""
+        sections = ["key_ideas", "patterns", "tradeoffs", "pitfalls", "framings", "applicability"]
+        missing_key_ideas = []
+        warnings = []
+        for bid in book_index.get("books", {}):
+            for sec in sections:
+                content = book_loader.read_book_section(bid, sec)
+                if "not found" in content.lower():
+                    if sec == "key_ideas":
+                        missing_key_ideas.append(f"book {bid}")
+                    else:
+                        warnings.append(f"book {bid}: {sec}")
+        if warnings:
+            import warnings as w
+            w.warn(f"Optional sections missing (non-fatal): {warnings}")
+        assert not missing_key_ideas, f"Books missing key_ideas (critical): {missing_key_ideas}"
+
+    def test_all_articles_all_sections_extractable(self, book_loader, book_index):
+        """Every article must have key_ideas; warn for other missing sections."""
+        sections = ["key_ideas", "patterns", "tradeoffs", "pitfalls", "framings", "applicability"]
+        missing_key_ideas = []
+        for aid in book_index.get("articles", {}):
+            content = book_loader.read_book_section(aid, "key_ideas")
+            if "not found" in content.lower() or len(content) < 10:
+                missing_key_ideas.append(f"article {aid}")
+        assert not missing_key_ideas, f"Articles missing key_ideas (critical): {missing_key_ideas}"

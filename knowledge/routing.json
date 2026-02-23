@@ -1,118 +1,102 @@
 {
-  "version": 1,
-  "updated": "2026-02-22",
+  "version": 2,
+  "updated": "2026-02-23",
   "tasks": {
     "architecture_review": {
       "description": "Review system architecture for soundness, tradeoffs, and maintainability",
       "primary_sources": ["01", "02", "03", "04", "05", "06"],
       "secondary_sources": ["17", "19", "20", "21", "32"],
-      "anthropic_articles": ["a01", "a05"],
-      "checklist_file": "checklists/architecture_review.md"
+      "anthropic_articles": ["a01", "a05"]
     },
     "code_review": {
       "description": "Review code for quality, readability, maintainability, and correctness",
       "primary_sources": ["06", "14", "15", "16"],
       "secondary_sources": ["04", "12", "13", "22"],
-      "anthropic_articles": ["a05", "a20"],
-      "checklist_file": "checklists/code_review.md"
+      "anthropic_articles": ["a05", "a20"]
     },
     "security_audit": {
       "description": "Audit system or code for security vulnerabilities and risks",
       "primary_sources": ["07", "08"],
       "secondary_sources": ["01", "17", "20"],
-      "anthropic_articles": ["a14"],
-      "checklist_file": "checklists/security_audit.md"
+      "anthropic_articles": ["a14"]
     },
     "test_strategy": {
       "description": "Design or review testing strategy, test architecture, and test quality",
       "primary_sources": ["12", "13"],
-      "secondary_sources": ["06", "14", "16"],
-      "anthropic_articles": ["a11", "a13"],
-      "checklist_file": "checklists/test_strategy.md"
+      "secondary_sources": ["06", "14", "16", "34"],
+      "anthropic_articles": ["a11", "a13"]
     },
     "bug_fix": {
       "description": "Diagnose and fix bugs with systematic approach",
       "primary_sources": ["16", "14", "17"],
       "secondary_sources": ["01", "06", "12", "18"],
-      "anthropic_articles": ["a09", "a15"],
-      "checklist_file": "checklists/bug_fix.md"
+      "anthropic_articles": ["a09", "a15"]
     },
     "feature_design": {
       "description": "Design new features on existing architecture",
       "primary_sources": ["06", "29", "30", "31"],
       "secondary_sources": ["02", "03", "04", "23", "24", "25"],
-      "anthropic_articles": ["a01"],
-      "checklist_file": "checklists/feature_design.md"
+      "anthropic_articles": ["a01"]
     },
     "api_design": {
       "description": "Design or review APIs for usability, consistency, and evolution",
       "primary_sources": ["20"],
       "secondary_sources": ["01", "04", "05", "06"],
-      "anthropic_articles": ["a06", "a07"],
-      "checklist_file": "checklists/api_design.md"
+      "anthropic_articles": ["a06", "a07"]
     },
     "data_viz_review": {
       "description": "Review data visualizations for clarity, accuracy, and effectiveness",
       "primary_sources": ["26", "27", "28"],
       "secondary_sources": ["23", "24", "25"],
-      "anthropic_articles": [],
-      "checklist_file": "checklists/data_viz_review.md"
+      "anthropic_articles": []
     },
     "product_doc": {
       "description": "Write or review product documentation, specs, and PRDs",
       "primary_sources": ["29", "30", "31"],
       "secondary_sources": ["23", "24", "26"],
-      "anthropic_articles": [],
-      "checklist_file": "checklists/product_doc.md"
+      "anthropic_articles": []
     },
     "presentation": {
       "description": "Create or review presentations and slideshows",
       "primary_sources": ["26"],
       "secondary_sources": ["23", "24", "25", "27", "28"],
-      "anthropic_articles": [],
-      "checklist_file": "checklists/presentation.md"
+      "anthropic_articles": []
     },
     "devops": {
       "description": "Design or review CI/CD pipelines, deployment, and infrastructure",
       "primary_sources": ["32", "17", "19"],
       "secondary_sources": ["18", "01"],
-      "anthropic_articles": ["a14", "a04"],
-      "checklist_file": "checklists/devops.md"
+      "anthropic_articles": ["a14", "a04"]
     },
     "ai_ml_design": {
       "description": "Design AI/ML systems, LLM applications, or agent architectures",
       "primary_sources": ["09", "10", "11"],
-      "secondary_sources": ["01", "08"],
-      "anthropic_articles": ["a01", "a02", "a03", "a04", "a05", "a06", "a07", "a08", "a09", "a10"],
-      "checklist_file": "checklists/ai_ml_design.md"
+      "secondary_sources": ["01", "08", "34"],
+      "anthropic_articles": ["a01", "a02", "a03", "a04", "a05", "a06", "a07", "a08", "a09", "a10"]
     },
     "refactoring": {
       "description": "Plan and execute code refactoring safely",
       "primary_sources": ["16", "06", "15"],
       "secondary_sources": ["04", "12", "14"],
-      "anthropic_articles": [],
-      "checklist_file": "checklists/refactoring.md"
+      "anthropic_articles": []
     },
     "observability": {
       "description": "Design or review observability, monitoring, and debugging systems",
       "primary_sources": ["18", "17", "19"],
       "secondary_sources": ["32", "01"],
-      "anthropic_articles": ["a12", "a15"],
-      "checklist_file": "checklists/observability.md"
+      "anthropic_articles": ["a12", "a15"]
     },
     "ux_review": {
       "description": "Review user experience, interaction design, and usability",
       "primary_sources": ["23", "24", "25"],
       "secondary_sources": ["26", "29"],
-      "anthropic_articles": [],
-      "checklist_file": "checklists/ux_review.md"
+      "anthropic_articles": []
     },
     "agent_design": {
       "description": "Design AI agents, tool interfaces, and agentic workflows",
       "primary_sources": ["33"],
       "secondary_sources": ["09", "11"],
-      "anthropic_articles": ["a01", "a02", "a03", "a04", "a05", "a06", "a07", "a08", "a09", "a10"],
-      "checklist_file": "checklists/agent_design.md"
+      "anthropic_articles": ["a01", "a02", "a03", "a04", "a05", "a06", "a07", "a08", "a09", "a10"]
     }
   }
 }

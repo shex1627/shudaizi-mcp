@@ -8,7 +8,7 @@ from pathlib import Path
 
 # Section heading patterns in book research files
 SECTION_PATTERNS = {
-    "key_ideas": r"(?:Key Ideas|Mental Models|Core Thesis|Core Insight|Core Pattern|Overview|What )",
+    "key_ideas": r"(?:Key Ideas|Mental Models|Core Thesis|Core Insight|Core Pattern|Core Principle|Core Problem|Core Finding|Core Innovation|Core Technique|General Principles|Overview|What |Note\b|Original Key Points)",
     "patterns": r"(?:Patterns|Approaches|Design Principles|Architecture|Workflow|The \d+ )",
     "tradeoffs": r"(?:Tradeoffs|Tensions|Challenges|Limitations|Production Challenges)",
     "pitfalls": r"(?:Watch Out|What to Watch|Pitfalls|Anti-Pattern|Architectural Limitations)",
