@@ -1,0 +1,13 @@
+{
+  "task_type": "architecture_review",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "Microservices decomposed by database entity (UserService, ProductService, OrderService, PaymentService, ShippingService) rather than by business capability or workflow. OrderService directly calls ProductService to modify stock. ShippingService directly calls UserService to read addresses. These cross-service data dependencies create tight coupling — an entity trap / distributed monolith.",
+  "expected_findings": [
+    {
+      "id": "entity_trap",
+      "keywords": ["entity trap", "entity-based", "business capability", "business capabilit", "workflow", "distributed monolith", "anemic"]
+    }
+  ],
+  "false_positive_keywords": []
+}

@@ -1,0 +1,13 @@
+{
+  "task_type": "devops",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "Migration script performs destructive schema changes (column renames, table renames, column drops, view drops) in a single step against a production database. This causes downtime because the running application expects the old column/table names. Should use the expand-and-contract (parallel change) pattern: add new columns, backfill, update app to use both, remove old columns.",
+  "expected_findings": [
+    {
+      "id": "missing_expand_contract",
+      "keywords": ["expand-and-contract", "expand and contract", "parallel change", "zero-downtime", "downtime", "rolling", "backward-compatible", "backward compatible", "dual-write", "dual write"]
+    }
+  ],
+  "false_positive_keywords": []
+}

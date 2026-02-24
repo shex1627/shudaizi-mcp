@@ -93,17 +93,22 @@ def discover_fixtures(filter_name: str | None = None) -> list[tuple[str, Path]]:
     fixtures = []
     for d in sorted(FIXTURES_DIR.iterdir()):
         if d.is_dir() and (d / "ground_truth.json").exists():
+            gt = json.loads((d / "ground_truth.json").read_text())
+            if gt.get("eval_mode") == "activation":
+                continue  # activation fixtures are tested by run_activation_eval.py
             if filter_name and d.name != filter_name:
                 continue
             fixtures.append((d.name, d))
     return fixtures
 
 
-def load_fixture(fixture_dir: Path) -> tuple[str, dict]:
+def load_fixture(fixture_dir: Path) -> tuple[str, dict, str]:
     code_files = [f for f in fixture_dir.iterdir() if f.suffix in (".py", ".js", ".ts", ".go", ".java")]
     code = code_files[0].read_text() if code_files else ""
     ground_truth = json.loads((fixture_dir / "ground_truth.json").read_text())
-    return code, ground_truth
+    prompt_file = fixture_dir / "prompt.md"
+    prompt_text = prompt_file.read_text() if prompt_file.exists() else ""
+    return code, ground_truth, prompt_text
 
 
 # ── Checklist loading ─────────────────────────────────────────────
@@ -148,6 +153,24 @@ For each issue found, explain what it is and why it matters.
 Respond with a structured list of findings. Be specific."""
 
 
+GENERATE_PROMPT = """\
+You are a senior software engineer writing production code.
+
+{checklist_section}
+
+{prompt_text}
+
+Write the implementation. Include all necessary imports."""
+
+
+GENERATE_PROMPT_NO_CHECKLIST = """\
+You are a senior software engineer writing production code.
+
+{prompt_text}
+
+Write the implementation. Include all necessary imports."""
+
+
 async def run_trial(
     client: anthropic.AsyncAnthropic,
     model: str,
@@ -155,10 +178,21 @@ async def run_trial(
     ground_truth: dict,
     checklist: str | None,
     trial_num: int,
+    prompt_text: str = "",
 ) -> TrialResult:
     task_type = ground_truth["task_type"].replace("_", " ")
+    eval_mode = ground_truth.get("eval_mode", "reactive")
 
-    if checklist:
+    if eval_mode == "proactive":
+        if checklist:
+            checklist_section = f"Use the following checklist to guide your implementation:\n\n{checklist}"
+            prompt = GENERATE_PROMPT.format(
+                checklist_section=checklist_section,
+                prompt_text=prompt_text,
+            )
+        else:
+            prompt = GENERATE_PROMPT_NO_CHECKLIST.format(prompt_text=prompt_text)
+    elif checklist:
         checklist_section = f"Use the following checklist to guide your review:\n\n{checklist}"
         prompt = REVIEW_PROMPT.format(
             task_type=task_type,
@@ -219,7 +253,7 @@ async def run_eval(
 
     # Build all tasks upfront for concurrent execution
     async def run_fixture(fixture_name: str, fixture_dir: Path) -> FixtureResult:
-        code, gt = load_fixture(fixture_dir)
+        code, gt, prompt_text = load_fixture(fixture_dir)
 
         checklist = None
         if use_checklist:
@@ -231,7 +265,7 @@ async def run_eval(
 
         # Run all trials for this fixture concurrently
         trial_coros = [
-            run_trial(client, model, code, gt, checklist, trial_num)
+            run_trial(client, model, code, gt, checklist, trial_num, prompt_text)
             for trial_num in range(1, num_trials + 1)
         ]
         trials = await asyncio.gather(*trial_coros)

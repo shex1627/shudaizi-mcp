@@ -1,0 +1,13 @@
+{
+  "task_type": "architecture_review",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "API gateway uses a single shared ThreadPoolExecutor (10 workers) and a single shared requests.Session for ALL 6 backend services. If any one service (e.g., analytics) becomes slow or hangs, it consumes threads from the shared pool, starving critical paths like checkout and payment. Missing bulkhead isolation — each service (or at least critical vs non-critical) should have its own resource pool.",
+  "expected_findings": [
+    {
+      "id": "missing_bulkhead",
+      "keywords": ["bulkhead", "isolation", "resource pool", "thread pool", "shared pool", "separate pool", "dedicated pool", "connection pool", "starv", "exhaust", "cascad"]
+    }
+  ],
+  "false_positive_keywords": []
+}

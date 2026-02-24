@@ -1,0 +1,17 @@
+{
+  "eval_mode": "activation",
+  "description": "User asks to make a rough gateway prototype production-ready. Flaky analytics service mentioned. Model should consult architecture_review checklist.",
+  "expected_tool_calls": [
+    {
+      "tool_name": "get_task_checklist",
+      "expected_args": { "task_type": "architecture_review" },
+      "acceptable_args": [{ "task_type": "code_review" }, { "task_type": "api_design" }]
+    }
+  ],
+  "expected_findings": [
+    {
+      "id": "resilience_patterns",
+      "keywords": ["timeout", "bulkhead", "circuit", "isolat", "retry", "backoff", "fallback", "pool"]
+    }
+  ]
+}

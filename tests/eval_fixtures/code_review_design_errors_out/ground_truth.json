@@ -1,0 +1,13 @@
+{
+  "task_type": "code_review",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "ConfigManager has excessive exception throwing for cases that could be eliminated by broadening the interface. get() with a default should never raise. get_int/get_str/get_list throw on None when a default was provided. merge() throws on empty dict instead of being a no-op. as_dict() throws on empty config instead of returning {}. These are cases where the interface could be broadened to design the error out of existence.",
+  "expected_findings": [
+    {
+      "id": "design_errors_out",
+      "keywords": ["design errors out", "broaden", "exception", "unnecessary error", "unnecessary exception", "no-op", "simplif", "eliminate", "over-defensive", "defensive"]
+    }
+  ],
+  "false_positive_keywords": []
+}

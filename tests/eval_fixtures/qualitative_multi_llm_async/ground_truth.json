@@ -1,0 +1,37 @@
+{
+  "eval_mode": "qualitative",
+  "description": "User asks for a batch processing script making multiple LLM API calls. Model should consult code_review checklist for concurrency and async patterns.",
+  "task_description": "Write a Python script that processes ~100 customer feedback entries using the Anthropic Claude API. For each entry: classify sentiment, extract product mentions, categorize the feedback type, and suggest response priority. Must handle production workload without being slow or hitting rate limits.",
+  "expected_tool_calls": [
+    {
+      "tool_name": "get_task_checklist",
+      "expected_args": { "task_type": "code_review" },
+      "acceptable_args": [
+        { "task_type": "ai_ml_design" },
+        { "task_type": "architecture_review" }
+      ]
+    }
+  ],
+  "judge_criteria": [
+    {
+      "id": 1,
+      "text": "Concurrent execution: Processes feedback entries in parallel using asyncio (gather, TaskGroup, create_task), thread pools, or explicit batching — NOT processing them one at a time in a sequential for loop."
+    },
+    {
+      "id": 2,
+      "text": "Error resilience: Individual entry failures (API errors, malformed input, timeout) do not crash the entire batch. Uses try/except around individual processing, collects errors, and continues with remaining entries."
+    },
+    {
+      "id": 3,
+      "text": "Rate limiting and bounded concurrency: Limits the number of concurrent API calls using a semaphore, batch size parameter, explicit rate limiter, or similar mechanism. Does NOT fire all 100 requests simultaneously."
+    },
+    {
+      "id": 4,
+      "text": "Cost awareness: Sets appropriate max_tokens for the API calls (not using unnecessarily large values), uses a cost-appropriate model (Haiku for simple classification), or at minimum acknowledges the cost implications of processing 100 entries."
+    },
+    {
+      "id": 5,
+      "text": "Progress and observability: Includes some form of progress tracking (logging, progress bar, print statements showing completion count), result summary (how many processed, how many failed), or structured output that makes debugging easy."
+    }
+  ]
+}

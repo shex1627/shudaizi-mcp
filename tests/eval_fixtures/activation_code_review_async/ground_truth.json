@@ -1,0 +1,17 @@
+{
+  "eval_mode": "activation",
+  "description": "User asks to add a function with 3 independent I/O calls. Existing code is sequential sync. Model should proactively consult code_review checklist and write concurrent code.",
+  "expected_tool_calls": [
+    {
+      "tool_name": "get_task_checklist",
+      "expected_args": { "task_type": "code_review" },
+      "acceptable_args": [{ "task_type": "architecture_review" }, { "task_type": "feature_design" }]
+    }
+  ],
+  "expected_findings": [
+    {
+      "id": "concurrent_execution",
+      "keywords": ["gather", "TaskGroup", "create_task", "concurrent", "parallel", "asyncio", "ThreadPoolExecutor", "as_completed"]
+    }
+  ]
+}

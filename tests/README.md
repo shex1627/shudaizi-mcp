@@ -89,6 +89,16 @@ Issues that require **book-level knowledge** or specific named concepts. The mod
 
 **How to identify**: Run `--compare` — if baseline shows any FAIL trials while the checklist version is 100%, it's Tier B.
 
+#### Proactive Fixtures (Tier B variant)
+
+These fixtures test whether the checklist helps the agent **write better code**, not just review existing code. Instead of a `code.py` with a seeded bug, they contain a `prompt.md` with a code-writing task. The ground truth keywords check the *generated* code for expected patterns.
+
+| Fixture | Task Type | What Should Be Generated | Source Concept |
+|---|---|---|---|
+| `code_review_proactive_sequential_io` | code_review | Concurrent execution of 3 independent API calls + timeouts | Phase 8: Implementation Patterns [22] |
+
+Proactive fixtures use `"eval_mode": "proactive"` in `ground_truth.json`. The LLM eval script automatically switches to a generation prompt ("write production code") instead of a review prompt.
+
 #### Tier C: Multi-File Architecture (not yet built)
 
 Issues requiring cross-file context and architectural reasoning: temporal decomposition, architecture sinkholes, missing fitness functions. These would need multi-file fixtures and are the next frontier.
@@ -97,9 +107,15 @@ Issues requiring cross-file context and architectural reasoning: temporal decomp
 
 1. Create a directory in `tests/eval_fixtures/`:
    ```
+   # Reactive fixture (review existing code):
    tests/eval_fixtures/my_new_fixture/
      code.py              # Code sample with a seeded issue
      ground_truth.json    # Expected findings
+
+   # Proactive fixture (test code generation):
+   tests/eval_fixtures/my_proactive_fixture/
+     prompt.md            # Code-writing task description
+     ground_truth.json    # Expected patterns in generated code
    ```
 
 2. Define `ground_truth.json`:
@@ -108,6 +124,7 @@ Issues requiring cross-file context and architectural reasoning: temporal decomp
      "task_type": "code_review",
      "detail_level": "standard",
      "focus": "",
+     "eval_mode": "reactive",
      "description": "Human-readable description of the seeded issue.",
      "expected_findings": [
        {
@@ -118,6 +135,8 @@ Issues requiring cross-file context and architectural reasoning: temporal decomp
      "false_positive_keywords": []
    }
    ```
+
+   For proactive fixtures, set `"eval_mode": "proactive"`. The LLM eval will use a generation prompt instead of a review prompt.
 
 3. Run deterministic tests first:
    ```bash

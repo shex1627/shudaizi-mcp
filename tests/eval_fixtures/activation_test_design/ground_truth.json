@@ -1,0 +1,17 @@
+{
+  "eval_mode": "activation",
+  "description": "User asks for a test suite for a service with DB, Stripe, and EventBus dependencies. Model should consult test_strategy checklist for managed/unmanaged mocking guidance.",
+  "expected_tool_calls": [
+    {
+      "tool_name": "get_task_checklist",
+      "expected_args": { "task_type": "test_strategy" },
+      "acceptable_args": [{ "task_type": "code_review" }]
+    }
+  ],
+  "expected_findings": [
+    {
+      "id": "mocking_strategy",
+      "keywords": ["mock.*stripe", "real.*database", "in-memory", "sqlite", "mock.*external", "managed", "unmanaged", "fake", "test double"]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "task_type": "code_review",
+  "detail_level": "standard",
+  "focus": "",
+  "eval_mode": "proactive",
+  "description": "Three independent API calls that should use concurrent execution. Without the proactive checklist, the model typically writes sequential awaits.",
+  "expected_findings": [
+    {
+      "id": "concurrent_execution",
+      "keywords": ["gather", "TaskGroup", "create_task", "concurrent", "parallel"]
+    },
+    {
+      "id": "timeout_present",
+      "keywords": ["timeout", "wait_for"]
+    }
+  ],
+  "false_positive_keywords": []
+}

@@ -1,0 +1,13 @@
+{
+  "task_type": "architecture_review",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "ETL pipeline organized by execution phase (read, parse, transform, format, write) rather than by domain concept or information to be hidden. Date parsing logic is separated from date formatting; currency parsing is separated from currency conversion — the same design decisions are scattered across temporal phases instead of being encapsulated in cohesive modules.",
+  "expected_findings": [
+    {
+      "id": "temporal_decomposition",
+      "keywords": ["temporal decomposition", "execution order", "temporal", "organized by phase", "organized by step"]
+    }
+  ],
+  "false_positive_keywords": []
+}

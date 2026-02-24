@@ -1,0 +1,13 @@
+{
+  "task_type": "data_viz_review",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "Dashboard has multiple Lie Factor violations from Tufte: (1) Bubble chart uses radius proportional to value, but visual perception is area — a 21% revenue increase (4.2→5.1) appears as a 47% increase in area. (2) Bar chart has a truncated Y-axis starting at $4M, exaggerating small differences. (3) 3D pie chart distorts slice areas via perspective tilt. (4) Icon array scales icon size instead of count.",
+  "expected_findings": [
+    {
+      "id": "lie_factor",
+      "keywords": ["lie factor", "area", "radius", "distort", "exaggerat", "truncat", "mislead", "perception", "proportional to area"]
+    }
+  ],
+  "false_positive_keywords": []
+}

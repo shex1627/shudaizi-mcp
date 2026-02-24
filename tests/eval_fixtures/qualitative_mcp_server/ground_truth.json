@@ -1,0 +1,38 @@
+{
+  "eval_mode": "qualitative",
+  "description": "User asks to design an MCP server for a recipe/meal planning app. Model should consult api_design or agent_design checklist for tool design principles.",
+  "task_description": "Design and implement an MCP server for a recipe and meal planning application. The server should expose tools that let an AI assistant help users search recipes, plan meals, generate shopping lists, and find recipes based on available ingredients.",
+  "expected_tool_calls": [
+    {
+      "tool_name": "get_task_checklist",
+      "expected_args": { "task_type": "api_design" },
+      "acceptable_args": [
+        { "task_type": "agent_design" },
+        { "task_type": "ai_ml_design" },
+        { "task_type": "feature_design" }
+      ]
+    }
+  ],
+  "judge_criteria": [
+    {
+      "id": 1,
+      "text": "Tool consolidation: The server defines a reasonable number of tools (roughly 4-8) where each tool performs meaningful, complete work. Does NOT create one tool per CRUD operation (e.g., separate create_recipe, update_recipe, delete_recipe, get_recipe_by_id, list_recipes) or explode into 15+ fine-grained tools."
+    },
+    {
+      "id": 2,
+      "text": "Description quality: Tool descriptions are specific and helpful for an AI agent. They explain what the tool does, what inputs mean, and ideally give examples of when to use it. NOT vague one-liners like 'Manages recipes' or 'Gets data'."
+    },
+    {
+      "id": 3,
+      "text": "Input schema design: Parameters are well-typed with appropriate use of enums, defaults, and required vs optional fields. Complex inputs use structured objects rather than raw strings. Parameter names are clear and self-documenting."
+    },
+    {
+      "id": 4,
+      "text": "Response usefulness: Tools return structured, actionable data that an AI assistant can work with directly. Responses include enough context (e.g., recipe title + prep time + ingredient count, not just IDs) without being bloated."
+    },
+    {
+      "id": 5,
+      "text": "Error handling and edge cases: Tools handle invalid inputs gracefully (nonexistent recipe IDs, empty search results, invalid dates). Returns clear error messages rather than crashing or returning empty results silently."
+    }
+  ]
+}

@@ -39,10 +39,13 @@ async def call_tool(server, name: str, arguments: dict):
 
 
 def discover_fixtures() -> list[tuple[str, Path]]:
-    """Find all eval fixture directories."""
+    """Find all eval fixture directories (excludes activation/qualitative fixtures)."""
     fixtures = []
     for d in sorted(FIXTURES_DIR.iterdir()):
         if d.is_dir() and (d / "ground_truth.json").exists():
+            gt = json.loads((d / "ground_truth.json").read_text())
+            if gt.get("eval_mode"):
+                continue  # non-standard fixtures tested by their own scripts
             fixtures.append((d.name, d))
     return fixtures
 
@@ -67,9 +70,12 @@ class TestFixtureIntegrity:
         assert len(fixtures) >= 8, f"Expected at least 8 fixtures, found {len(fixtures)}"
 
     @pytest.mark.parametrize("name,fixture_dir", discover_fixtures())
-    def test_fixture_has_code_file(self, name, fixture_dir):
+    def test_fixture_has_code_or_prompt_file(self, name, fixture_dir):
         code_files = [f for f in fixture_dir.iterdir() if f.suffix in (".py", ".js", ".ts", ".go", ".java")]
-        assert len(code_files) >= 1, f"Fixture {name} missing code file"
+        prompt_file = fixture_dir / "prompt.md"
+        assert len(code_files) >= 1 or prompt_file.exists(), (
+            f"Fixture {name} missing both code file and prompt.md"
+        )
 
     @pytest.mark.parametrize("name,fixture_dir", discover_fixtures())
     def test_ground_truth_schema(self, name, fixture_dir):

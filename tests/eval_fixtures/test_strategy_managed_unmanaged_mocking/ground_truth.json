@@ -1,0 +1,13 @@
+{
+  "task_type": "test_strategy",
+  "detail_level": "standard",
+  "focus": "",
+  "description": "Test suite inverts the managed/unmanaged dependency mocking rules from Khorikov. The database (managed dependency that should use real instances) is mocked. SendGrid and RabbitMQ (unmanaged third-party dependencies that should be mocked) use real instances. The internal EmailValidator (private dependency that should not be mocked) is also mocked.",
+  "expected_findings": [
+    {
+      "id": "mock_inversion",
+      "keywords": ["managed", "unmanaged", "mock the database", "real database", "mock.*sendgrid", "mock.*third-party", "mock.*external", "should be mock", "should not be mock", "shouldn't be mock", "shouldn't mock"]
+    }
+  ],
+  "false_positive_keywords": []
+}

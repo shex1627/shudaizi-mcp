@@ -1,0 +1,34 @@
+{
+  "eval_mode": "qualitative",
+  "description": "User asks for executive-ready sales data visualizations. Model should proactively consult data_viz_review checklist for chart design principles.",
+  "task_description": "Generate Python visualization code for quarterly sales data (4 regions, 4 quarters, 3 product categories) for an executive audience. The charts should communicate key business insights about growth drivers and return rates.",
+  "expected_tool_calls": [
+    {
+      "tool_name": "get_task_checklist",
+      "expected_args": { "task_type": "data_viz_review" },
+      "acceptable_args": [{ "task_type": "presentation" }]
+    }
+  ],
+  "judge_criteria": [
+    {
+      "id": 1,
+      "text": "Chart type appropriateness: Uses suitable chart types for the data relationships being shown. For example, bars or horizontal bars for categorical comparisons, lines for trends over time. Does NOT use pie charts, 3D charts, or mismatched types (e.g., bar charts for time series trends)."
+    },
+    {
+      "id": 2,
+      "text": "Visual clarity and declutter: Removes unnecessary visual elements. Avoids excessive gridlines, chart borders, or data markers. Uses direct labeling on the data instead of separate legends where practical. Minimizes rotated text."
+    },
+    {
+      "id": 3,
+      "text": "Color strategy: Uses a restrained, purposeful color palette — not the default matplotlib rainbow or a random assortment. Uses color to highlight key data points or comparisons, not just to differentiate every category."
+    },
+    {
+      "id": 4,
+      "text": "Title quality: Chart titles communicate the insight or takeaway (e.g., 'Apparel drives Q4 growth across all regions') rather than just labeling the topic (e.g., 'Revenue by Category'). Titles help the reader understand what matters."
+    },
+    {
+      "id": 5,
+      "text": "Narrative and insight focus: The visualizations are organized to tell a coherent story answering the exec team's questions (growth drivers, return rate concerns). Charts build on each other rather than presenting disconnected data dumps."
+    }
+  ]
+}
