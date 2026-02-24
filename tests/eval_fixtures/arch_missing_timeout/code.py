@@ -1,4 +1,4 @@
-"""Payment gateway client — missing timeouts on all outbound HTTP calls."""
+"""Payment gateway client for processing charges and refunds."""
 
 import httpx
 import json

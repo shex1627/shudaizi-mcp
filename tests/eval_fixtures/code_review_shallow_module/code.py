@@ -1,4 +1,4 @@
-"""User service layer — every method is a thin pass-through wrapper."""
+"""User service layer with repository, service, and controller."""
 
 
 class UserRepository:

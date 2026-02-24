@@ -1,4 +1,4 @@
-"""Analytics dashboard — unbounded queries with no pagination or limits."""
+"""Analytics dashboard API for reporting and data export."""
 
 import sqlite3
 from datetime import datetime, timedelta

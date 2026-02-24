@@ -1,4 +1,4 @@
-"""Notification service — blocks the async event loop with synchronous calls."""
+"""Async notification service for sending alerts and digests."""
 
 import asyncio
 import time

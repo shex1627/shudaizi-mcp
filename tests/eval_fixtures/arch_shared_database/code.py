@@ -1,4 +1,4 @@
-"""Two services sharing the same database connection — distributed monolith."""
+"""E-commerce backend with order and inventory services."""
 
 import sqlite3
 
@@ -58,7 +58,7 @@ class InventoryService:
         return [dict(r) for r in rows]
 
     def get_product_with_order_count(self, product_id: int) -> dict:
-        """Directly queries order_items table — crossing service boundary."""
+        """Get product details with total order count."""
         row = _db.execute(
             """SELECT p.*, COUNT(oi.id) as order_count
                FROM products p

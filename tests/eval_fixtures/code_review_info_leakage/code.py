@@ -1,4 +1,4 @@
-"""Order processing — same date parsing logic duplicated across modules."""
+"""Order processing system with reporting and export modules."""
 
 from datetime import datetime
 

@@ -1,4 +1,4 @@
-"""Shopping cart service — violates Command-Query Separation."""
+"""Shopping cart service for managing user carts."""
 
 from datetime import datetime
 

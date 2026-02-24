@@ -1,4 +1,4 @@
-"""User registration and authentication — stores passwords in plaintext."""
+"""User registration and authentication service."""
 
 import sqlite3
 import secrets

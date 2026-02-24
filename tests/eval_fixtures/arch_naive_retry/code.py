@@ -1,4 +1,4 @@
-"""Message queue consumer with naive retry logic."""
+"""Message queue consumer for processing async jobs."""
 
 import json
 import requests

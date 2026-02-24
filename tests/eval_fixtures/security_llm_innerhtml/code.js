@@ -1,6 +1,5 @@
 /**
- * Chat widget that renders LLM responses directly into the DOM.
- * Vulnerable to XSS via LLM output.
+ * Chat widget that renders LLM responses in the browser.
  */
 
 async function sendMessage(userMessage) {

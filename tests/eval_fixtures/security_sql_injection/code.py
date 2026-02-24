@@ -1,4 +1,4 @@
-"""User search endpoint — vulnerable to SQL injection."""
+"""User search endpoint for finding users by name."""
 
 import sqlite3
 

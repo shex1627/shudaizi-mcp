@@ -1,4 +1,4 @@
-"""Order management API — vulnerable to IDOR."""
+"""Order management API for viewing and updating orders."""
 
 from flask import Flask, request, jsonify, g
 
