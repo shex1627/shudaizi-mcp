@@ -232,6 +232,13 @@
       "year": 2026,
       "category": "LLM / AI Engineering — Anthropic-Specific",
       "file": "book_research/33_anthropic_engineering_blog.md"
+    },
+    "34": {
+      "title": "LLM-as-Judge Evaluation (Research Synthesis)",
+      "author": "Multi-Source Research Synthesis",
+      "year": 2026,
+      "category": "Evaluation & Testing",
+      "file": "book_research/34_llm_as_judge_evaluation.md"
     }
   },
   "articles": {
