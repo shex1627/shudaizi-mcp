@@ -92,6 +92,29 @@ updated: 2026-02-22
 - [ ] Shared mutable state protected with `asyncio.Lock` across await boundaries [22]
 - [ ] Async used only for I/O-bound work; CPU-bound work offloaded to `run_in_executor` or process pool [22]
 
+## Phase 8: Implementation Patterns (Proactive)
+
+Apply these patterns **while writing code**, not just during review.
+
+### Concurrency & I/O
+- [ ] When making 2+ independent I/O calls, use concurrent execution (`asyncio.gather`, `TaskGroup`, `Promise.all`) rather than sequential awaits [22]
+- [ ] When calling external services from async code, use async-native clients (`httpx`, `aiohttp`) not synchronous libraries (`requests`) [22]
+- [ ] When adding any external I/O call, set a timeout — prefer client-level defaults, override per-call when needed [22]
+- [ ] When creating concurrent work, bound it with a semaphore — decide the concurrency limit explicitly [22]
+
+### Module Design
+- [ ] When creating a new class or module, verify it will be deep: the interface should be simpler than what it hides. If the class just delegates, it shouldn't exist yet [06]
+- [ ] When adding a layer (service, controller, adapter), verify it provides a genuinely different abstraction than adjacent layers [06]
+- [ ] When a design decision (format, algorithm, protocol) could leak across modules, encapsulate it in exactly one module before writing call sites [06]
+
+### Functions
+- [ ] When a function will both change state and compute a result, split it into a command and a query before writing the body [15][16]
+- [ ] When a function will take more than 3 parameters, introduce a parameter object before adding parameters one-by-one [16]
+
+### Error Handling
+- [ ] When calling an external service, design the error path before the happy path — decide: retry with backoff? fallback? propagate? [17][14]
+- [ ] When an edge case arises, first ask "can I broaden the spec to define this out of existence?" before adding a conditional [06]
+
 ---
 
 ## Code Smells to Flag

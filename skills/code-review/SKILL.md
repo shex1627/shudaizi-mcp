@@ -11,6 +11,11 @@ description: >
 - User asks about code quality, readability, or maintainability
 - User wants feedback on a PR or code change
 - User asks about refactoring opportunities
+- **Proactive — while writing code:**
+  - You are about to write code involving multiple independent I/O calls (API requests, DB queries, file reads)
+  - You are about to write async/concurrent code
+  - You are about to create a new module, class, or service layer
+  - You are about to write error handling for external service calls
 
 ## Procedure
 
@@ -20,6 +25,7 @@ description: >
 4. Present findings as: **What's Good** → **Concerns** → **Suggested Changes**
 5. Cite the source principle for each finding
 6. Prioritize: correctness > readability > performance > style
+7. **When activated proactively (during writing):** Focus on Phase 8. Apply relevant patterns *before* writing, not after.
 
 ## Always-Apply Principles
 
