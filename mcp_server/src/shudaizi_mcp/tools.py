@@ -33,9 +33,19 @@ def register_tools(
             Tool(
                 name="get_task_checklist",
                 description=(
-                    "Get a curated checklist for a software engineering task. "
-                    "Returns actionable items drawn from 33 books and 21 Anthropic articles, each citing its source. "
-                    "Use this as your primary review/design companion."
+                    "Get a curated checklist for a software engineering task. Returns actionable "
+                    "items drawn from 33 books and 21 Anthropic articles, each citing its source.\n\n"
+                    "IMPORTANT: Call this tool proactively in these situations:\n"
+                    "- Before writing code that involves async/concurrent I/O, external API calls, "
+                    "or new module/class/service design\n"
+                    "- Before reviewing any code, architecture, or security-sensitive changes\n"
+                    "- Before designing APIs, data visualizations, or deployment pipelines\n"
+                    "- When the user asks about best practices, patterns, or tradeoffs\n\n"
+                    "Match the user's intent to a task_type: "
+                    "architecture_review, code_review, security_audit, test_strategy, "
+                    "bug_fix, feature_design, api_design, data_viz_review, product_doc, "
+                    "presentation, devops, ai_ml_design, refactoring, observability, "
+                    "ux_review, agent_design"
                 ),
                 inputSchema={
                     "type": "object",
