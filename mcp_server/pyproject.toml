@@ -9,6 +9,7 @@ dependencies = [
 
 [project.scripts]
 shudaizi-mcp = "shudaizi_mcp.server:main"
+shudaizi-mcp-http = "shudaizi_mcp.server:main_http"
 
 [build-system]
 requires = ["hatchling"]

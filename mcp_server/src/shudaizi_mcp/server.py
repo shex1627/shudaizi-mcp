@@ -34,5 +34,26 @@ def main() -> None:
     asyncio.run(_run())
 
 
+def main_http(host: str = "127.0.0.1", port: int = 8530) -> None:
+    """Entry point for StreamableHTTP mode (used with Cloudflare Tunnel)."""
+    import uvicorn
+    from starlette.applications import Starlette
+    from starlette.routing import Route
+    from mcp.server.streamable_http_manager import StreamableHTTPSessionManager
+
+    server = create_server()
+    session_manager = StreamableHTTPSessionManager(app=server, stateless=True)
+
+    class _AsgiApp:
+        async def __call__(self, scope, receive, send):
+            await session_manager.handle_request(scope, receive, send)
+
+    starlette_app = Starlette(
+        routes=[Route("/mcp", endpoint=_AsgiApp())],
+        lifespan=lambda app: session_manager.run(),
+    )
+    uvicorn.run(starlette_app, host=host, port=port, log_level="info")
+
+
 if __name__ == "__main__":
     main()
