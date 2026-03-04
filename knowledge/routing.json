@@ -1,23 +1,23 @@
 {
   "version": 2,
-  "updated": "2026-02-23",
+  "updated": "2026-03-02",
   "tasks": {
     "architecture_review": {
       "description": "Review system architecture for soundness, tradeoffs, and maintainability",
-      "primary_sources": ["01", "02", "03", "04", "05", "06"],
-      "secondary_sources": ["17", "19", "20", "21", "32"],
+      "primary_sources": ["01", "02", "03", "04", "05", "06", "36"],
+      "secondary_sources": ["17", "19", "20", "21", "32", "38", "39", "40"],
       "anthropic_articles": ["a01", "a05"]
     },
     "code_review": {
       "description": "Review code for quality, readability, maintainability, and correctness",
       "primary_sources": ["06", "14", "15", "16"],
-      "secondary_sources": ["04", "12", "13", "22"],
+      "secondary_sources": ["04", "12", "13", "22", "36"],
       "anthropic_articles": ["a05", "a20"]
     },
     "security_audit": {
       "description": "Audit system or code for security vulnerabilities and risks",
-      "primary_sources": ["07", "08"],
-      "secondary_sources": ["01", "17", "20"],
+      "primary_sources": ["07", "08", "39"],
+      "secondary_sources": ["01", "17", "20", "38"],
       "anthropic_articles": ["a14"]
     },
     "test_strategy": {
@@ -29,19 +29,19 @@
     "bug_fix": {
       "description": "Diagnose and fix bugs with systematic approach",
       "primary_sources": ["16", "14", "17"],
-      "secondary_sources": ["01", "06", "12", "18"],
+      "secondary_sources": ["01", "06", "12", "18", "38"],
       "anthropic_articles": ["a09", "a15"]
     },
     "feature_design": {
       "description": "Design new features on existing architecture",
-      "primary_sources": ["06", "29", "30", "31"],
-      "secondary_sources": ["02", "03", "04", "23", "24", "25"],
+      "primary_sources": ["06", "29", "30", "31", "36", "40"],
+      "secondary_sources": ["02", "03", "04", "23", "24", "25", "35", "39"],
       "anthropic_articles": ["a01"]
     },
     "api_design": {
       "description": "Design or review APIs for usability, consistency, and evolution",
       "primary_sources": ["20"],
-      "secondary_sources": ["01", "04", "05", "06"],
+      "secondary_sources": ["01", "04", "05", "06", "36", "38", "39", "40"],
       "anthropic_articles": ["a06", "a07"]
     },
     "data_viz_review": {
@@ -52,50 +52,50 @@
     },
     "product_doc": {
       "description": "Write or review product documentation, specs, and PRDs",
-      "primary_sources": ["29", "30", "31"],
-      "secondary_sources": ["23", "24", "26"],
+      "primary_sources": ["29", "30", "31", "37", "40"],
+      "secondary_sources": ["23", "24", "26", "35"],
       "anthropic_articles": []
     },
     "presentation": {
       "description": "Create or review presentations and slideshows",
-      "primary_sources": ["26"],
-      "secondary_sources": ["23", "24", "25", "27", "28"],
+      "primary_sources": ["26", "37"],
+      "secondary_sources": ["23", "24", "25", "27", "28", "35", "40"],
       "anthropic_articles": []
     },
     "devops": {
       "description": "Design or review CI/CD pipelines, deployment, and infrastructure",
       "primary_sources": ["32", "17", "19"],
-      "secondary_sources": ["18", "01"],
+      "secondary_sources": ["18", "01", "39"],
       "anthropic_articles": ["a14", "a04"]
     },
     "ai_ml_design": {
       "description": "Design AI/ML systems, LLM applications, or agent architectures",
       "primary_sources": ["09", "10", "11"],
-      "secondary_sources": ["01", "08", "34"],
+      "secondary_sources": ["01", "08", "34", "39", "40"],
       "anthropic_articles": ["a01", "a02", "a03", "a04", "a05", "a06", "a07", "a08", "a09", "a10"]
     },
     "refactoring": {
       "description": "Plan and execute code refactoring safely",
       "primary_sources": ["16", "06", "15"],
-      "secondary_sources": ["04", "12", "14"],
+      "secondary_sources": ["04", "12", "14", "36"],
       "anthropic_articles": []
     },
     "observability": {
       "description": "Design or review observability, monitoring, and debugging systems",
       "primary_sources": ["18", "17", "19"],
-      "secondary_sources": ["32", "01"],
+      "secondary_sources": ["32", "01", "38"],
       "anthropic_articles": ["a12", "a15"]
     },
     "ux_review": {
       "description": "Review user experience, interaction design, and usability",
       "primary_sources": ["23", "24", "25"],
-      "secondary_sources": ["26", "29"],
+      "secondary_sources": ["26", "29", "40"],
       "anthropic_articles": []
     },
     "agent_design": {
       "description": "Design AI agents, tool interfaces, and agentic workflows",
       "primary_sources": ["33"],
-      "secondary_sources": ["09", "11"],
+      "secondary_sources": ["09", "11", "38", "39"],
       "anthropic_articles": ["a01", "a02", "a03", "a04", "a05", "a06", "a07", "a08", "a09", "a10"]
     }
   }

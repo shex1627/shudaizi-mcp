@@ -2,10 +2,10 @@
 task: bug_fix
 description: Systematic approach to diagnosing, fixing, and hardening code against bugs
 primary_sources: ["16", "14", "17"]
-secondary_sources: ["01", "06", "12", "18"]
+secondary_sources: ["01", "06", "12", "18", "38"]
 anthropic_articles: ["a09", "a15"]
-version: 1
-updated: 2026-02-22
+version: 2
+updated: 2026-03-02
 ---
 
 # Bug Fix Checklist
@@ -19,6 +19,7 @@ updated: 2026-02-22
 - [ ] Examine the failure through the observability lens: slice by dimensions (user, endpoint, region, build, feature flag) to isolate the affected cohort [18]
 - [ ] Use structured events and trace context to identify the causal chain across service boundaries [18]
 - [ ] Ask: "Is this a cascading failure?" — check whether a slow or failing downstream dependency is exhausting resources upstream (blocked threads, full connection pools) [17]
+- [ ] For distributed system bugs: check messaging patterns first — duplicate processing (missing Idempotent Receiver), lost messages (no Dead Letter Channel), ordering violation (missing partition strategy), correlation failure (missing Correlation ID) [38]
 - [ ] For data consistency bugs: identify which anomaly is being observed (stale read, phantom, write conflict) and which isolation level or replication lag could cause it [01]
 
 ## Phase 2: Preparatory Refactoring
@@ -46,6 +47,7 @@ updated: 2026-02-22
 - [ ] If the bug involves an integration point, verify: Is there a timeout? A circuit breaker? A fallback? Missing any of these is the root cause of most production instability [17]
 - [ ] For bugs caused by slow responses or hung connections: add explicit connection and read timeouts, use bounded resource pools (bulkheads) [17]
 - [ ] For retry-related bugs: ensure retries use exponential backoff with jitter, a maximum retry count, and only retry on retriable errors [17]
+- [ ] For event publishing bugs: verify the outbox pattern is used — business data and the event must be written in the same database transaction; a separate process publishes from the outbox to prevent events from being lost on process crash [38]
 - [ ] For data consistency bugs: verify the transaction isolation level matches the actual requirement — many databases default to weaker isolation than developers assume [01]
 
 ## Phase 5: Harden Against Recurrence
@@ -96,3 +98,4 @@ updated: 2026-02-22
 | **Hope-based deployment** | Deploying the fix without actively observing production telemetry afterward | [18] |
 | **Cascading failure blindness** | Fixing one service without checking whether the failure propagated to callers | [17] |
 | **Shallow fix on a deep problem** | Patching the surface without addressing the missing abstraction or information leakage underneath | [06][16] |
+| **Missing Dead Letter** | Failed messages disappear silently; no alerting, no replay mechanism — the same underlying bug recurs indefinitely | [38] |

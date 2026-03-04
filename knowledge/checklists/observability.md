@@ -2,10 +2,10 @@
 task: observability
 description: Review or design observability for a system — instrumentation, telemetry, SLOs, alerting, and debugging workflows
 primary_sources: ["18", "17", "19"]
-secondary_sources: ["32", "01"]
+secondary_sources: ["32", "01", "38"]
 anthropic_articles: ["a12", "a15"]
-version: 1
-updated: 2026-02-22
+version: 2
+updated: 2026-03-02
 ---
 
 # Observability Checklist
@@ -39,6 +39,8 @@ updated: 2026-02-22
 - [ ] Ensure circuit breaker state is observable — monitor open/closed/half-open transitions at every integration point [17]
 - [ ] Confirm every outbound call has both connection and response timeouts; missing timeouts are the #1 stability anti-pattern [17]
 - [ ] Map failure propagation paths: can a single slow dependency cascade through the system? Verify timeout + circuit breaker coverage [17]
+- [ ] Verify Dead Letter Channels for all message queues have dedicated alerting — DLC depth should alert before it reaches a threshold; messages arriving in the DLC signal processing failures that are otherwise silent [38]
+- [ ] Confirm Correlation IDs are propagated across all message boundaries and exposed in telemetry — messaging Correlation IDs are the event-driven equivalent of distributed trace IDs [38]
 
 ## Phase 4: Debugging & Exploratory Analysis
 
@@ -87,3 +89,4 @@ updated: 2026-02-22
 | "Three pillars" as separate silos | Logs, metrics, traces in isolation cannot answer cross-cutting questions | [18] |
 | Treating observability as a tool purchase | The system is observable because you instrumented it, not because you bought a product | [18] |
 | Pre-deploy testing only, no production monitoring | Real-world issues are missed by evals; user feedback and production telemetry are essential | [a15] |
+| Unmonitored dead letter channels | DLCs exist but have no alerting or review process — failed messages accumulate as silent data graves | [38] |

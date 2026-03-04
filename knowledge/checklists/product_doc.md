@@ -1,17 +1,21 @@
 ---
 task: product_doc
 description: Write or review product documentation, specs, and PRDs
-primary_sources: ["29", "30", "31"]
-secondary_sources: ["23", "24", "26"]
+primary_sources: ["29", "30", "31", "37", "40"]
+secondary_sources: ["23", "24", "26", "35"]
 anthropic_articles: []
-version: 1
-updated: 2026-02-22
+version: 2
+updated: 2026-03-02
 ---
 
 # Product Documentation Checklist
 
 ## Phase 1: Problem & Audience Clarity
 
+- [ ] Before writing, state the main point in one sentence — if you cannot, you are still thinking, not ready to write [37]
+- [ ] Apply SCQA: Situation (what reader already accepts) → Complication (what changed or went wrong) → Question (what the reader now asks) → Answer (your main recommendation at the top) [37]
+- [ ] Write the PR/FAQ press release first: one page, prose only, no bullets — headline, problem, solution, customer quote; inability to complete it signals an underdeveloped concept [40]
+- [ ] Apply the customer quote test: write a convincing, specific testimonial from a named persona; if you cannot, return to customer research before writing the document [40]
 - [ ] Identify the specific audience and what action you need them to take — "leadership" is too vague; name the role and the decision [29]
 - [ ] Articulate the customer problem using customer-centric framing, not business jargon — "users struggle to X" not "we need to build Y" [31]
 - [ ] Apply the Opportunity Assessment: what business objective, how will you measure success, what problem for customers, which customer segment? [29]
@@ -28,6 +32,8 @@ updated: 2026-02-22
 - [ ] Ensure at least three solution alternatives were considered before selecting the one documented — avoid first-idea bias [31]
 - [ ] Address all four risk categories: value (will they use it?), usability (can they use it?), feasibility (can we build it?), viability (does it work for the business?) [29]
 - [ ] Verify the scope follows fixed-time/variable-scope thinking — core must-haves are non-negotiable, nice-to-haves are explicitly marked as cuttable [30]
+- [ ] Include the Internal FAQ questions: TAM (number of customers × willingness to pay), per-unit economics, upfront investment, new capabilities required, top three risks, competitive differentiation, legal/compliance, headcount needed [40]
+- [ ] Structure supporting arguments as a pyramid: the main recommendation at the apex, MECE arguments below it, evidence at the base — verify no argument overlap and no major dimension missing [37]
 
 ## Phase 3: Success Metrics & Outcomes
 
@@ -40,6 +46,11 @@ updated: 2026-02-22
 ## Phase 4: Communication & Visual Clarity
 
 - [ ] Use action titles for any charts or data sections — "Southeast revenue declined 15%" not "Revenue by Region" [26]
+- [ ] Apply horizontal logic: reading only the section headings in sequence should tell a coherent, complete story without the body content [37]
+- [ ] Apply vertical logic: each section stands alone — the heading synthesizes the content below it, not just labels it [37]
+- [ ] Apply the "so what?" test to every section: if a reader can ask "so what does this mean for me?" after reading it, the synthesis is missing or incomplete [37]
+- [ ] Replace bullets that list with bullets that argue — each bullet should answer "so what?" not just state a fact [37]
+- [ ] Use action titles for every section and chart: "Southeast revenue declined 15%" not "Revenue by Region" [37]
 - [ ] Apply the "don't make me think" test: can a reader scanning this doc understand the key points in under 60 seconds? [24]
 - [ ] Eliminate happy talk — remove self-congratulatory or filler text that no one reads [24]
 - [ ] Structure the document for scanning: clear visual hierarchy, defined sections, bold key terms [24]
@@ -53,6 +64,8 @@ updated: 2026-02-22
 - [ ] Apply horizontal logic: if you read only the section headings in sequence, do they tell a coherent story? [26]
 - [ ] Apply vertical logic: does each section stand on its own — does the heading match the content below? [26]
 - [ ] Verify the document distinguishes between stakeholder needs (business viability) and customer needs (value/usability) [29]
+- [ ] Before circulating, anticipate the seven likely criticisms: too risky, will make things worse, wrong process, done before and failed, not the right time — prepare written answers [35]
+- [ ] Verify MECE on the document's argument structure: are the main sections mutually exclusive (no overlap) and collectively exhaustive (no major dimension missing)? [37]
 
 ## Phase 6: Review & Iteration
 
@@ -76,6 +89,9 @@ updated: 2026-02-22
 8. "What happens if the reader only scans the headings?" — The horizontal logic test [26]
 9. "What mental model will the reader form from this structure?" — The conceptual model test [23]
 10. "Have we fallen in love with the solution instead of the problem?" — The discovery discipline check [29]
+11. "What is the SCQA? Can you state the Complication and the Answer in one sentence each?" — the Pyramid Principle opening test [37]
+12. "Can you write a convincing customer quote?" — if not, the customer is not understood well enough to document [40]
+13. "Does reading only the section headings in sequence tell the complete story?" — the horizontal logic test [37]
 
 ---
 
@@ -95,3 +111,7 @@ updated: 2026-02-22
 | **Stakeholder capture** | Document is a list of features dictated by stakeholders rather than discovered through customer research | [29][31] |
 | **Missing error states** | Doc describes the happy path but not what happens when things go wrong | [23] |
 | **Conceptual model mismatch** | Internal jargon and org-chart structure instead of user-mental-model structure | [23][24] |
+| **Missing SCQA opening** | Document starts with background but never establishes the complication or states the answer upfront — reader must read to the end to find the point [37] |
+| **Bullets that list, not argue** | Bullet points are a data dump of facts rather than a structured argument — structure looks organized but reasoning is absent [37] |
+| **PR/FAQ avoided** | Concept described in vague slides or meeting notes rather than a written PR/FAQ — underdevelopment is never exposed, team builds the wrong thing [40] |
+| **Skills-forward framing** | Document describes what the team will build (features, capabilities) rather than what the customer will experience [40] |

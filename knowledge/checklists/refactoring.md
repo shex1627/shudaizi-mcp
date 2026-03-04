@@ -2,9 +2,9 @@
 task: refactoring
 description: Plan and execute code refactoring safely
 primary_sources: ["16", "06", "15"]
-secondary_sources: ["04", "12", "14"]
-version: 1
-updated: 2026-02-22
+secondary_sources: ["04", "12", "14", "36"]
+version: 2
+updated: 2026-03-02
 ---
 
 # Refactoring Checklist
@@ -42,6 +42,9 @@ updated: 2026-02-22
 - [ ] For Data Clumps: apply Extract Class or Introduce Parameter Object — groups of data traveling together signal a missing abstraction [16]
 - [ ] For Repeated Switches: apply Replace Conditional with Polymorphism [16]
 - [ ] Consider whether errors can be designed out of existence by broadening the method specification [06]
+- [ ] Assess the domain model richness: is business logic scattered in service classes (anemic domain model)? A refactoring direction may be to move behavior into entities and value objects where it belongs [36]
+- [ ] Check for ubiquitous language drift: have class and method names drifted from the domain vocabulary? Rename toward the language domain experts actually use [36]
+- [ ] Identify missing value objects: groups of primitive values that always travel together (currency + amount, start date + end date) signal a missing immutable value object abstraction [36]
 
 ## Phase 4: Safe Execution
 
@@ -102,3 +105,4 @@ updated: 2026-02-22
 | **Comment phobia** | Deleting valuable "why" comments in pursuit of "self-documenting code" — code cannot express design rationale | [06][15] |
 | **Mixed hats** | Adding features and refactoring simultaneously — losing the safety of behavior-preserving transformations | [16] |
 | **Ignoring the economics** | Refactoring code that works and will never be touched again — refactoring is an investment in future change velocity | [16][14] |
+| **Anemic service proliferation** | Refactoring creates more service classes to contain business logic rather than moving behavior into the entities and aggregates where it belongs | [36] |

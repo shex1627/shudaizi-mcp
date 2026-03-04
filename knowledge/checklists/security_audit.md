@@ -1,16 +1,25 @@
 ---
 task: security_audit
 description: Audit system or code for security vulnerabilities and risks
-primary_sources: ["07", "08"]
+primary_sources: ["07", "08", "39"]
 secondary_sources: ["01", "17", "20"]
 anthropic_articles: ["a14"]
-version: 1
-updated: 2026-02-22
+version: 2
+updated: 2026-03-02
 ---
 
 # Security Audit Checklist
 
-## Phase 1: Attack Surface Mapping
+## Phase 1: Threat Modeling (Start Here)
+
+- [ ] Draw the Data Flow Diagram (DFD): enumerate all External Entities (users, partner systems), Processes (services, functions), Data Stores (databases, caches, files), and Data Flows (HTTP, DB queries, queue messages) [39]
+- [ ] Mark all trust boundaries on the DFD as dotted lines — every data flow crossing a trust boundary is a candidate threat; focus enumeration on boundary crossings [39]
+- [ ] Apply STRIDE per DFD element: External Entities → Spoofing + Repudiation; Processes → all six; Data Stores → Tampering + Repudiation + Information Disclosure + DoS; Data Flows → Tampering + Information Disclosure + DoS [39]
+- [ ] For every identified threat, record an explicit response: Mitigate (add a control), Eliminate (remove the feature), Transfer (insurance/SLA), or Accept (with documented sign-off) — threats with no recorded response are the most dangerous [39]
+- [ ] Prioritize threats by DREAD: Damage, Reproducibility, Exploitability, Affected users, Discoverability — highest DREAD scores addressed first [39]
+- [ ] Validate the threat model against the actual running system — DFDs that reflect desired architecture (not actual implementation) produce false security confidence [39]
+
+## Phase 2: Attack Surface Mapping
 
 - [ ] Enumerate all input surfaces: form fields, HTTP headers (Host, Referer, User-Agent, Cookie), URL path/query params, JSON/XML bodies, file uploads, WebSocket messages [07]
 - [ ] Identify every trust boundary where data crosses domains (user-to-server, server-to-database, server-to-third-party API, front-end-to-back-end) [07]
@@ -19,7 +28,7 @@ updated: 2026-02-22
 - [ ] Document the technology stack per component to understand framework-specific vulnerability classes [07]
 - [ ] For LLM-integrated systems: map every data channel reaching the model (user prompts, RAG documents, tool outputs, system context) [08]
 
-## Phase 2: Authentication and Session Management
+## Phase 3: Authentication and Session Management
 
 - [ ] Verify passwords are hashed with a strong adaptive algorithm (bcrypt/scrypt/argon2), never stored in plaintext [07]
 - [ ] Confirm session tokens use cryptographically secure random generators (CSPRNG) with sufficient entropy [07]
@@ -30,7 +39,7 @@ updated: 2026-02-22
 - [ ] Ensure session expiry and idle timeouts are enforced server-side [07]
 - [ ] For APIs: verify OAuth token validation includes audience, issuer, expiry, and signature checks [07] [20]
 
-## Phase 3: Authorization and Access Control
+## Phase 4: Authorization and Access Control
 
 - [ ] Confirm server-side authorization checks exist on every endpoint -- not just authenticated, but authorized for the specific resource [07]
 - [ ] Test for vertical privilege escalation: can a regular user access admin functions? [07]
@@ -40,7 +49,7 @@ updated: 2026-02-22
 - [ ] For LLM tool-calling: verify each tool has minimum permissions, separate service accounts, and rate limits [08]
 - [ ] Require human-in-the-loop approval for destructive or irreversible LLM-initiated actions [08]
 
-## Phase 4: Input Validation and Injection
+## Phase 5: Input Validation and Injection
 
 - [ ] Confirm all database queries use parameterized queries/prepared statements -- never string concatenation [07]
 - [ ] Verify OS command execution uses language-native APIs, not shell calls; if unavoidable, strict allowlisting [07]
@@ -51,7 +60,7 @@ updated: 2026-02-22
 - [ ] Verify output encoding is context-aware: HTML body, HTML attribute, JavaScript, URL, CSS each need different encoding [07]
 - [ ] For LLM systems: never pass LLM output directly to SQL, shell commands, `eval()`, `innerHTML`, or API calls with elevated permissions [08]
 
-## Phase 5: Data Protection
+## Phase 6: Data Protection
 
 - [ ] Verify sensitive data at rest is encrypted; encryption keys are managed separately from data [01]
 - [ ] Confirm transport-layer encryption (TLS) for all data in transit, including internal service-to-service calls [01]
@@ -62,7 +71,7 @@ updated: 2026-02-22
 - [ ] For LLM systems: never put secrets or API keys in system prompts -- assume prompts will be extracted [08]
 - [ ] Audit logging: log authentication events, authorization failures, and all state-changing operations for forensics [01] [17]
 
-## Phase 6: LLM-Specific Risks
+## Phase 7: LLM-Specific Risks
 
 - [ ] Test for direct prompt injection: "Ignore previous instructions" variants, role-play jailbreaks, encoding-based evasion [08]
 - [ ] Test for indirect prompt injection via RAG: adversarial content in knowledge base documents that hijacks model behavior [08]
@@ -72,7 +81,7 @@ updated: 2026-02-22
 - [ ] Pin model versions in production; verify model provenance with checksums when downloading [08]
 - [ ] Monitor for output anomalies: topic shifts, unusual tool call sequences, system prompt extraction attempts [08]
 
-## Phase 7: Infrastructure and Production Security
+## Phase 8: Infrastructure and Production Security
 
 - [ ] Verify every outbound call has both connection and response timeouts configured [17]
 - [ ] Confirm circuit breakers are in place at integration points with meaningful fallback behavior [17]
@@ -94,6 +103,8 @@ updated: 2026-02-22
 6. "If the LLM is fully compromised via prompt injection, what can it access?" -- agent permission audit [08]
 7. "Does each layer of defense work as if it were the only defense?" -- defense in depth validation [07]
 8. "What grows without bound, and how is it cleaned up?" -- steady-state analysis [17]
+9. "What is the DFD, and where are the trust boundaries? Have STRIDE threats been enumerated at each boundary crossing?" [39]
+10. "For each identified threat: is the response documented as mitigate, eliminate, transfer, or accept — with explicit sign-off from the appropriate risk owner?" [39]
 
 ## Common Vulnerabilities to Check
 
@@ -110,3 +121,5 @@ updated: 2026-02-22
 | Excessive LLM Agency | Audit all tools/functions available to the LLM and their permission levels | [08] |
 | Cascading Failure | Map failure propagation paths through integration points; verify timeout + circuit breaker coverage | [17] |
 | Unbounded Resource Consumption | Check for missing pagination, unbounded queues, and missing rate limits on API and LLM endpoints | [17] [20] [08] |
+| STRIDE Threat Not Modeled | No DFD, no explicit threat enumeration per component — security found only through ad-hoc review or production incidents | [39] |
+| Accepted Risk Without Sign-Off | Developer implicitly accepted a threat by not acting on it — undocumented risk debt that no one owns | [39] |

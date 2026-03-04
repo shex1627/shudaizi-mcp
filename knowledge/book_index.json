@@ -239,6 +239,48 @@
       "year": 2026,
       "category": "Evaluation & Testing",
       "file": "book_research/34_llm_as_judge_evaluation.md"
+    },
+    "35": {
+      "title": "The Agenda Mover: When Your Good Idea Is Not Enough",
+      "author": "Samuel B. Bacharach",
+      "year": 2016,
+      "category": "Leadership & Organizational Execution",
+      "file": "book_research/35_agenda_mover.md"
+    },
+    "36": {
+      "title": "Domain-Driven Design: Tackling Complexity in the Heart of Software",
+      "author": "Eric Evans",
+      "year": 2003,
+      "category": "Architecture & System Design",
+      "file": "book_research/36_domain_driven_design.md"
+    },
+    "37": {
+      "title": "The Minto Pyramid Principle: Logic in Writing, Thinking, and Problem Solving",
+      "author": "Barbara Minto",
+      "year": 1987,
+      "category": "Technical Communication",
+      "file": "book_research/37_pyramid_principle.md"
+    },
+    "38": {
+      "title": "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions",
+      "author": "Gregor Hohpe & Bobby Woolf",
+      "year": 2003,
+      "category": "Architecture & System Design",
+      "file": "book_research/38_enterprise_integration_patterns.md"
+    },
+    "39": {
+      "title": "Threat Modeling: Designing for Security",
+      "author": "Adam Shostack",
+      "year": 2014,
+      "category": "Security",
+      "file": "book_research/39_threat_modeling.md"
+    },
+    "40": {
+      "title": "Working Backwards: Insights, Stories, and Secrets from Inside Amazon",
+      "author": "Colin Bryar & Bill Carr",
+      "year": 2021,
+      "category": "Product Strategy & Development",
+      "file": "book_research/40_working_backwards.md"
     }
   },
   "articles": {

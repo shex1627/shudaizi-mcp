@@ -2,10 +2,10 @@
 task: code_review
 description: Review code for quality, readability, maintainability, and correctness
 primary_sources: ["06", "14", "15", "16"]
-secondary_sources: ["04", "12", "13", "22"]
+secondary_sources: ["04", "12", "13", "22", "36"]
 anthropic_articles: ["a05", "a20"]
-version: 1
-updated: 2026-02-22
+version: 2
+updated: 2026-03-02
 ---
 
 # Code Review Checklist
@@ -33,6 +33,10 @@ updated: 2026-02-22
 - [ ] DRY applied to *knowledge*, not just code appearance -- each fact has one authoritative home [14]
 - [ ] Orthogonality check: "If I change requirements behind one function, how many modules break?" [14]
 - [ ] Dependencies point inward toward higher-level policies; business logic does not import infrastructure [04]
+- [ ] Check for ubiquitous language: do class names, method names, and module names use the domain's vocabulary, or generic technical terms that obscure domain concepts? [36]
+- [ ] Flag anemic domain model: entity/aggregate classes are data bags with no behavior, while all business logic lives in service classes — DDD overhead without DDD benefit [36]
+- [ ] Verify aggregate boundary discipline: external code must not hold direct references to objects inside an aggregate; all access must go through the aggregate root [36]
+- [ ] Prefer value objects over entities: if an object has no identity (defined entirely by its attributes), make it immutable — `Address`, `Money`, `DateRange` are value objects, not entities [36]
 - [ ] No pass-through variables threaded through long call chains unused [06]
 - [ ] Interfaces are somewhat general-purpose without being speculative [06]
 - [ ] Configuration parameters are avoided when the module can determine a reasonable default [06]
@@ -134,6 +138,9 @@ Apply these patterns **while writing code**, not just during review.
 | Shallow Module | Interface nearly as complex as implementation | [06] |
 | Information Leakage | Same design decision reflected in multiple modules | [06] |
 | Broken Window | Hack or shortcut left without acknowledgment or ticket | [14] |
+| Anemic Domain Model | Business logic in service classes; entity classes are data bags with getters/setters only | [36] |
+| Aggregate Boundary Violation | External code directly accesses or modifies objects inside an aggregate without going through the aggregate root | [36] |
+| Missing Ubiquitous Language | Class and method names use generic technical terms where domain-specific names should appear — code doesn't reflect how domain experts talk | [36] |
 
 ---
 

@@ -1,11 +1,11 @@
 ---
 task: presentation
 description: Create or review presentations and slideshows
-primary_sources: ["26"]
-secondary_sources: ["23", "24", "25", "27", "28"]
+primary_sources: ["26", "37"]
+secondary_sources: ["23", "24", "25", "27", "28", "35", "40"]
 anthropic_articles: []
-version: 1
-updated: 2026-02-22
+version: 2
+updated: 2026-03-02
 ---
 
 # Presentation Checklist
@@ -14,6 +14,9 @@ updated: 2026-02-22
 
 - [ ] Identify the specific audience and what action you need them to take after the presentation [26]
 - [ ] Articulate the Big Idea in one sentence — point of view, what is at stake, and a complete thought [26]
+- [ ] Apply SCQA to establish the opening: Situation (what the audience already accepts) → Complication (what changed or what's at risk) → Question (what they now want answered) → Answer (your main point, stated at the top) [37]
+- [ ] Know your audience's position before you enter the room: map champions, persuadables, skeptics, and opponents — calibrate where to invest your argument [35]
+- [ ] Prepare answers to the most likely criticisms before the presentation: "too risky," "done before and failed," "not the right time" — anticipate, don't react [35]
 - [ ] Write the 3-Minute Story: if you only had three minutes, what would you say? [26]
 - [ ] Distinguish between exploratory analysis (what you did to understand the data) and explanatory communication (what you tell the audience) — only present the latter [26]
 - [ ] Storyboard the presentation on paper or sticky notes before opening any tool — map the narrative arc [26]
@@ -22,8 +25,11 @@ updated: 2026-02-22
 
 - [ ] Structure the deck as a narrative arc: Beginning (setting + conflict) -> Middle (rising action / evidence) -> End (resolution + call to action) [26]
 - [ ] Ensure every slide advances the story by one beat — no slides that exist "for completeness" without serving the narrative [26]
-- [ ] Apply horizontal logic: reading only the slide titles in sequence should tell a coherent, self-contained story [26]
-- [ ] Apply vertical logic: each individual slide makes sense on its own — the title matches the visual below it [26]
+- [ ] Replace topic headlines with message headlines — "Q4 Revenue Miss" is a topic; "Three operational failures caused the Q4 revenue miss" is a message; message headlines are always better [37]
+- [ ] Apply horizontal logic: reading only the slide titles in sequence should tell a coherent, self-contained story without the body content [37][26]
+- [ ] Apply vertical logic: each individual slide makes sense on its own — the title synthesizes and matches the content below it [37][26]
+- [ ] Apply the "so what?" test to every slide: if a viewer can ask "so what does this mean?" after reading it, the message headline is missing or the synthesis is incomplete [37]
+- [ ] For strategic decisions to senior leaders: consider replacing the slide deck with a six-pager narrative and a silent reading period — prose exposes weak logic that slides allow to hide [40]
 - [ ] End with a clear, specific call to action — "We should invest $200K in Q4" not "Let's discuss next steps" [26]
 - [ ] Exploit the Peak-End Rule: invest disproportionate design effort in the emotional peak and the final slide [25]
 
@@ -71,6 +77,8 @@ updated: 2026-02-22
 - [ ] Confirm the design leverages Jakob's Law: use familiar conventions for navigation, layout, and iconography [25]
 - [ ] Apply the aesthetic-usability effect: visual polish increases perceived credibility and trust — invest in consistent typography, spacing, and alignment [25]
 - [ ] Run the "where are your eyes drawn?" test on each slide — if the answer is "nowhere in particular," focus attention has not been established [26]
+- [ ] Apply MECE to any grouped lists: are items mutually exclusive (no overlap) and collectively exhaustive (no major dimension missing)? [37]
+- [ ] For funding requests or investment decisions, lead with the cost-of-inaction: quantify precisely what delay costs — this counters the "not the right time" criticism [35]
 
 ---
 
@@ -86,6 +94,8 @@ updated: 2026-02-22
 8. "Does the presentation end with a specific, actionable ask?" — Vague endings waste the narrative investment [26]
 9. "Would a colorblind viewer miss any critical information?" — The accessibility test [28]
 10. "Am I showing my exploratory work or my explanatory communication?" — Only the latter belongs in a presentation [26]
+11. "Does reading only the slide titles tell the complete story?" — The horizontal logic test [37]
+12. "Have I pre-briefed the key decision-makers? What position will each person be in when they walk in?" — Coalition-building happens before the room [35]
 
 ---
 
@@ -105,3 +115,6 @@ updated: 2026-02-22
 | **Legend-dependent charts** | Using a separate legend when direct labeling would eliminate back-and-forth eye movement | [26][27][28] |
 | **Truncated bar axes** | Bar charts not starting at zero, exaggerating small differences through visual distortion | [27][28] |
 | **Decoration masking problems** | Beautiful slides that hide unclear messages — aesthetic-usability effect can mask real issues in review | [25] |
+| **Topic headlines** | Slide titles label content ("Q3 Data") instead of stating the conclusion ("Sales declined 8% due to pricing pressure") — forces audience to interpret rather than act | [37] |
+| **Buried conclusion** | Builds through evidence before revealing the main point — exhausting for the audience; state the answer first | [37] |
+| **Unprimed audience** | Presenting to decision-makers who have not been pre-briefed — coalition-building should happen before the room, not in it | [35] |

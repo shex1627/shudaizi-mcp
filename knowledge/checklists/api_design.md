@@ -2,10 +2,10 @@
 task: api_design
 description: Design or review an API surface using resource-oriented patterns, consistency rules, and agent-tool principles
 primary_sources: ["20"]
-secondary_sources: ["01", "04", "05", "06"]
+secondary_sources: ["01", "04", "05", "06", "36", "38", "40"]
 anthropic_articles: ["a06", "a07"]
-version: 1
-updated: 2026-02-22
+version: 2
+updated: 2026-03-02
 ---
 
 # API Design Checklist
@@ -19,6 +19,7 @@ updated: 2026-02-22
 - [ ] For many-to-many relationships, create explicit association resources with their own properties rather than embedding lists [20]
 - [ ] For configuration or preferences that have exactly one instance per parent, use singleton sub-resources (Get + Update only, no Create/Delete) [20]
 - [ ] Ensure source-code dependencies point inward — domain logic must not depend on API transport or framework details [04]
+- [ ] Align API operations with domain operations, not CRUD operations: `POST /orders/{id}/confirm` (domain action) over `PATCH /orders/{id}` with `status: "confirmed"` (generic update) — APIs express the ubiquitous language of the providing bounded context [36]
 
 ## Phase 2: Standard Methods & Operations
 
@@ -29,6 +30,9 @@ updated: 2026-02-22
 - [ ] For Delete, decide between hard delete and soft delete explicitly; soft delete requires `expireTime`, `undelete`, and filtered List behavior [20]
 - [ ] Justify every custom method (`:archive`, `:translate`, `:move`) — if many custom methods accumulate, reconsider the resource model [20]
 - [ ] For operations taking longer than a synchronous response, return a Long-Running Operation resource that supports Get, List, Delete, Cancel, and Wait [20]
+- [ ] Design all mutating endpoints to be idempotent via a `requestId` / idempotency key — at-least-once delivery from clients means the same request may arrive multiple times [38][20]
+- [ ] For async endpoints (webhooks, event subscriptions): document the failure scenario explicitly — Dead Letter / retry policy, acknowledgment protocol, and replay capability [38]
+- [ ] Include Correlation IDs in all async API responses so callers can track operations across services without polling [38]
 
 ## Phase 3: Pagination, Filtering & Errors
 
@@ -49,6 +53,8 @@ updated: 2026-02-22
 - [ ] Never add a required field to an existing request — this is a breaking change [20]
 - [ ] Decompose services along bounded contexts — each service boundary should be independently deployable [05]
 - [ ] Ensure the API interface is "somewhat general-purpose": stable enough for future extension without interface changes, but not speculatively over-engineered [06]
+- [ ] Treat the API as a Published Language between bounded contexts: every schema change is a contract change affecting downstream consumers; document backward compatibility guarantees explicitly [36]
+- [ ] Recommend that downstream consumers implement an Anti-Corruption Layer to translate your API's model into their own domain model — prevents your model from leaking into downstream domain logic [36]
 
 ## Phase 5: Consistency & Naming Conventions
 
@@ -81,6 +87,9 @@ updated: 2026-02-22
 6. "Would an AI agent be able to discover, invoke, and parse the response of this endpoint without human help?" [a06]
 7. "Does this dependency point inward toward domain logic or outward toward infrastructure?" [04]
 8. "What consistency guarantee does this paginated list provide across pages?" [01][20]
+9. "Does this API use the domain's ubiquitous language, or does it expose database tables as resources?" [36]
+10. "Write the Working Backwards press release for this API: who is the developer customer, what is their pain, and why is this API meaningfully better than existing alternatives?" [40]
+11. "For async endpoints: are Correlation IDs returned? Is there a documented failure and retry policy?" [38]
 
 ---
 
@@ -100,3 +109,6 @@ updated: 2026-02-22
 | **Opaque tool responses** | Returning only UUIDs and codes without human-readable context — forces agents into extra lookup calls | [a06] |
 | **Missing idempotency** | Create operations without a `requestId` — retries cause duplicate resources | [20] |
 | **Cargo-cult soft delete** | Implementing soft delete everywhere without considering uniqueness conflicts, storage costs, and GDPR implications | [20] |
+| **CRUD-mapped domain operations** | API exposes status fields for generic patching instead of named domain operations — callers cannot understand the domain model from the API surface | [36] |
+| **Missing Correlation IDs** | Async APIs return no way to track operation progress — callers must guess or poll blindly [38] |
+| **Skills-forward API design** | API designed for the convenience of the implementing team (matches database schema, exposes internal field names) rather than the consuming developer's needs | [40] |
