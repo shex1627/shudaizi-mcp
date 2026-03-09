@@ -281,6 +281,13 @@
       "year": 2021,
       "category": "Product Strategy & Development",
       "file": "book_research/40_working_backwards.md"
+    },
+    "41": {
+      "title": "Prompt Caching: Cross-Provider Research Synthesis",
+      "author": "Multi-Source Research Synthesis",
+      "year": 2026,
+      "category": "LLM / AI Engineering — Cost & Latency Optimization",
+      "file": "book_research/41_prompt_caching_cross_provider.md"
     }
   },
   "articles": {

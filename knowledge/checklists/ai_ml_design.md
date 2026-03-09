@@ -64,6 +64,10 @@ updated: 2026-02-22
 ## Phase 6: Production Readiness
 
 - [ ] Implement inference optimization: KV-cache management, quantization, batching, and semantic caching [09][11]
+- [ ] Structure prompts for caching: static content (system instructions, tools, reference docs) first, dynamic content (user queries) last [41]
+- [ ] Choose the right caching strategy per provider: explicit breakpoints (Anthropic), automatic (OpenAI), named cache objects (Gemini) [41]
+- [ ] Evaluate the caching-vs-compaction trade-off for agentic workloads — prefix stability may save more than context compression [41]
+- [ ] Eliminate dynamic content (timestamps, UUIDs, session IDs) from prompt prefixes to avoid cache invalidation [41]
 - [ ] Design for the "demo to production" gap: real users type differently, edge cases multiply, scale requirements emerge [09]
 - [ ] Implement graceful degradation — define fallback behavior when the LLM is slow, down, or returns garbage [09]
 - [ ] For long-running agents, solve the shift-change problem: structured progress files, one-feature-per-session focus, git checkpoints [a04]
@@ -101,3 +105,5 @@ updated: 2026-02-22
 | **Silent ML degradation** | No monitoring for distribution shift or prediction quality — models degrade invisibly | [10] |
 | **Demo-quality shipping** | Assuming demo performance predicts production performance across real user inputs | [09] |
 | **Feedback loop blindness** | Not asking whether the model's output influences its future training data | [10] |
+| **Cache-hostile prompts** | Embedding timestamps, UUIDs, or dynamic content in prompt prefixes — destroying cache hits across all providers | [41] |
+| **Over-compaction breaking cache** | Aggressively summarizing conversation history to save tokens while destroying the cacheable prefix — often costs more than it saves | [41] |

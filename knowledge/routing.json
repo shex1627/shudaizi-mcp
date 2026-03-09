@@ -41,7 +41,7 @@
     "api_design": {
       "description": "Design or review APIs for usability, consistency, and evolution",
       "primary_sources": ["20"],
-      "secondary_sources": ["01", "04", "05", "06", "36", "38", "39", "40"],
+      "secondary_sources": ["01", "04", "05", "06", "36", "38", "39", "40", "41"],
       "anthropic_articles": ["a06", "a07"]
     },
     "data_viz_review": {
@@ -70,7 +70,7 @@
     },
     "ai_ml_design": {
       "description": "Design AI/ML systems, LLM applications, or agent architectures",
-      "primary_sources": ["09", "10", "11"],
+      "primary_sources": ["09", "10", "11", "41"],
       "secondary_sources": ["01", "08", "34", "39", "40"],
       "anthropic_articles": ["a01", "a02", "a03", "a04", "a05", "a06", "a07", "a08", "a09", "a10"]
     },
@@ -95,7 +95,7 @@
     "agent_design": {
       "description": "Design AI agents, tool interfaces, and agentic workflows",
       "primary_sources": ["33"],
-      "secondary_sources": ["09", "11", "38", "39"],
+      "secondary_sources": ["09", "11", "38", "39", "41"],
       "anthropic_articles": ["a01", "a02", "a03", "a04", "a05", "a06", "a07", "a08", "a09", "a10"]
     }
   }
