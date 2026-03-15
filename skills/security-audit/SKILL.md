@@ -1,8 +1,8 @@
 ---
 name: security-audit
 description: >
-  Security audit using Web Application Hacker's Handbook, LLM Security Playbook, and related books.
-  Use when auditing code or systems for security vulnerabilities, including LLM-specific risks.
+  Security audit using Web Application Hacker's Handbook, LLM Security Playbook, Threat Modeling (Shostack),
+  and related books. Use when auditing code or systems for security vulnerabilities, including LLM-specific risks.
 ---
 
 ## When to Activate
@@ -37,4 +37,6 @@ description: >
 - Data protection & encryption: `book_research/01_designing_data_intensive_applications.md`
 - Production resilience: `book_research/17_release_it.md`
 - API security patterns: `book_research/20_api_design_patterns.md`
+- Systematic threat modeling & STRIDE: `book_research/39_threat_modeling.md`
+- Messaging & integration security: `book_research/38_enterprise_integration_patterns.md`
 - Agent sandboxing: `book_research/anthropic_articles/14_sandboxing.md`

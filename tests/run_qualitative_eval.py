@@ -69,7 +69,7 @@ SDK_TOOLS = [
         "name": "get_task_checklist",
         "description": (
             "Get a curated checklist for a software engineering task. "
-            "Returns actionable items drawn from 33 books and 21 Anthropic articles, each citing its source. "
+            "Returns actionable items drawn from 41 books and 21 Anthropic articles, each citing its source. "
             "Use this as your primary review/design companion."
         ),
         "input_schema": {

@@ -1,6 +1,6 @@
 # Shudaizi
 
-A knowledge system that gives AI coding agents (Claude Code, Cursor, Windsurf, Copilot) access to curated software engineering wisdom from 33 books and 21 Anthropic engineering articles — delivered as focused, token-efficient checklists at the moment they're needed.
+A knowledge system that gives AI coding agents (Claude Code, Cursor, Windsurf, Copilot) access to curated software engineering wisdom from 41 books and 21 Anthropic engineering articles — delivered as focused, token-efficient checklists at the moment they're needed.
 
 ## The Problem
 

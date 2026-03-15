@@ -40,3 +40,6 @@ description: >
 - Signifiers, conceptual models, and feedback: `book_research/23_design_of_everyday_things.md`
 - Visual hierarchy, scanning behavior, and omit needless words: `book_research/24_dont_make_me_think.md`
 - Fitts's Law, Hick's Law, Miller's Law, and Peak-End Rule: `book_research/25_laws_of_ux.md`
+- Pyramid structure, MECE grouping, and logical argument flow: `book_research/37_pyramid_principle.md`
+- Stakeholder navigation & political framing: `book_research/35_agenda_mover.md`
+- Working Backwards narrative format: `book_research/40_working_backwards.md`

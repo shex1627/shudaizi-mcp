@@ -1,7 +1,7 @@
 [project]
 name = "shudaizi-mcp"
 version = "0.1.0"
-description = "MCP server for software engineering knowledge from 33 books + 21 Anthropic articles"
+description = "MCP server for software engineering knowledge from 41 books + 21 Anthropic articles"
 requires-python = ">=3.10"
 dependencies = [
     "mcp[cli]>=1.0.0",

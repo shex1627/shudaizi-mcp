@@ -44,3 +44,7 @@ description: >
 - Web usability & scanning: `book_research/24_dont_make_me_think.md`
 - Cognitive psychology laws for UI: `book_research/25_laws_of_ux.md`
 - Agent architecture patterns: `book_research/anthropic_articles/01_building_effective_agents.md`
+- Bounded contexts & domain modeling: `book_research/36_domain_driven_design.md`
+- PR/FAQ and Working Backwards process: `book_research/40_working_backwards.md`
+- Stakeholder alignment & political navigation: `book_research/35_agenda_mover.md`
+- Threat modeling for security-aware design: `book_research/39_threat_modeling.md`

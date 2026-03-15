@@ -1,6 +1,6 @@
 # Shudaizi MCP Server
 
-MCP server that provides software engineering knowledge from 33 books + 21 Anthropic engineering articles. Works with any MCP-compatible coding agent (Claude Code, Cursor, Windsurf, Copilot, etc.).
+MCP server that provides software engineering knowledge from 41 books + 21 Anthropic engineering articles. Works with any MCP-compatible coding agent (Claude Code, Cursor, Windsurf, Copilot, etc.).
 
 ## Installation
 

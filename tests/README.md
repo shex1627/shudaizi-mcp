@@ -20,7 +20,7 @@ Validates the knowledge system's files, references, and data consistency. Catche
 |---|---|
 | `TestFileIntegrity` | Every file referenced in `book_index.json` and `routing.json` exists on disk |
 | `TestCrossReferences` | All source IDs in routing resolve, skills match checklists, citation IDs are valid |
-| `TestBookLoader` | All 16 checklists load at all 3 detail levels, all 33 books + 21 articles parse |
+| `TestBookLoader` | All 16 checklists load at all 3 detail levels, all 41 books + 21 articles parse |
 | `TestTaskRouter` | Task listing, book/article lookup, reload, format methods |
 | `TestKnowledgeManager` | Write operations (add source, update checklist) on a temp copy |
 | `TestContentQuality` | Frontmatter present, sufficient checklist items, all items cite sources, books have key sections |
@@ -35,7 +35,7 @@ Tests the MCP server through the actual protocol layer — tool schemas, dispatc
 |---|---|
 | `TestToolListing` | 5 tools registered, correct names, valid schemas, required fields |
 | `TestReadToolCalls` | All 3 read tools return correct `TextContent`, detail level ordering, focus filtering |
-| `TestToolDispatch` | Unknown tool handling, exhaustive calls to all 16 tasks / 33 books / 21 articles |
+| `TestToolDispatch` | Unknown tool handling, exhaustive calls to all 16 tasks / 41 books / 21 articles |
 
 **When to run**: After editing any file in `mcp_server/src/`.
 

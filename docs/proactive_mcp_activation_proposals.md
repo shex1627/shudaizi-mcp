@@ -29,14 +29,14 @@ This follows Anthropic's "Prompt-Engineered Descriptions" principle [a06] — tr
 ### Current description (~45 tokens)
 ```
 Get a curated checklist for a software engineering task.
-Returns actionable items drawn from 33 books and 21 Anthropic articles,
+Returns actionable items drawn from 41 books and 21 Anthropic articles,
 each citing its source. Use this as your primary review/design companion.
 ```
 
 ### Proposed description (~120 tokens)
 ```
 Get a curated checklist for a software engineering task. Returns actionable
-items drawn from 33 books and 21 Anthropic articles, each citing its source.
+items drawn from 41 books and 21 Anthropic articles, each citing its source.
 
 IMPORTANT: Call this tool proactively in these situations:
 - Before writing code that involves async/concurrent I/O, external API calls,
@@ -173,7 +173,7 @@ Combined with a shorter top-level description:
 ```
 Get a curated checklist for a software engineering task. Call this
 proactively before writing, reviewing, or designing code — not just
-when explicitly asked. Returns items from 33 books + 21 articles.
+when explicitly asked. Returns items from 41 books + 21 articles.
 ```
 
 ### Analysis

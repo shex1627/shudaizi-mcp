@@ -9,12 +9,12 @@ When vibe-coding with AI agents (Claude Code, Cursor, Windsurf, Copilot), the LL
 - **Reinventing wheels**: Feature designs that don't leverage known patterns (saga, CQRS, progressive disclosure, etc.)
 - **AI slop**: Data visualizations, UX, and presentations that violate foundational design principles
 
-**We have the knowledge** — 33 curated research documents covering 32 books + 21 Anthropic engineering articles. The problem is *delivery*: getting the right subset of knowledge to the right agent at the right moment, without drowning it in tokens.
+**We have the knowledge** — 41 curated research documents covering 40 books + 21 Anthropic engineering articles. The problem is *delivery*: getting the right subset of knowledge to the right agent at the right moment, without drowning it in tokens.
 
 ## 2. Desired Outcome
 
 A developer says "review this architecture" or "add knowledge about Thinking Fast and Slow" to *any* coding agent, and the system:
-1. Routes to the relevant subset of knowledge (not all 33 books)
+1. Routes to the relevant subset of knowledge (not all 41 books)
 2. Returns a focused, actionable checklist (~3-5K tokens, not ~500K)
 3. Supports drill-down into specific books when deeper context is needed
 4. Allows the LLM itself to research and add new knowledge sources
@@ -59,7 +59,7 @@ A developer says "review this architecture" or "add knowledge about Thinking Fas
                            │ references
                      ┌─────▼──────────────────────┐
                      │    book_research/            │
-                     │    (33 books + 21 articles)  │
+                     │    (41 books + 21 articles)  │
                      │    Source of truth            │
                      └─────────────────────────────┘
 ```
@@ -81,7 +81,7 @@ A developer says "review this architecture" or "add knowledge about Thinking Fas
 shudaizi/
 ├── book_research/                  # EXISTING — source of truth
 │   ├── 01_designing_data_intensive_applications.md
-│   ├── ... (33 files)
+│   ├── ... (41 files)
 │   └── anthropic_articles/         # 21 individual article files
 │
 ├── knowledge/                      # NEW — curated delivery layer
@@ -236,7 +236,7 @@ A general-purpose skill for when the user's task doesn't match a specific task t
 ---
 name: get-book-wisdom
 description: >
-  Retrieve knowledge from the 33-book + 21-article research library.
+  Retrieve knowledge from the 41-book + 21-article research library.
   Use for any software engineering topic: principles, patterns, checklists, or tradeoffs.
 ---
 ```
@@ -300,22 +300,22 @@ Citations (`[01]`, `[06]`) are the routing keys for drill-down via `get_book_kno
 
 | Task Type | Primary Sources | Secondary | Anthropic Articles |
 |-----------|----------------|-----------|-------------------|
-| `architecture_review` | 01, 02, 03, 04, 05, 06 | 17, 19, 20, 21, 32 | a01, a05 |
-| `code_review` | 06, 14, 15, 16 | 04, 12, 13, 22 | a05, a20 |
-| `security_audit` | 07, 08 | 01, 17, 20 | a14 |
-| `test_strategy` | 12, 13 | 06, 14, 16 | a11, a13 |
-| `bug_fix` | 16, 14, 17 | 01, 06, 12, 18 | a09, a15 |
-| `feature_design` | 06, 29, 30, 31 | 02, 03, 04, 23-25 | a01 |
-| `api_design` | 20 | 01, 04, 05, 06 | a06, a07 |
+| `architecture_review` | 01, 02, 03, 04, 05, 06, 36 | 17, 19, 20, 21, 32, 38, 39, 40 | a01, a05 |
+| `code_review` | 06, 14, 15, 16 | 04, 12, 13, 22, 36 | a05, a20 |
+| `security_audit` | 07, 08, 39 | 01, 17, 20, 38 | a14 |
+| `test_strategy` | 12, 13 | 06, 14, 16, 34 | a11, a13 |
+| `bug_fix` | 16, 14, 17 | 01, 06, 12, 18, 38 | a09, a15 |
+| `feature_design` | 06, 29, 30, 31, 36, 40 | 02, 03, 04, 23-25, 35, 39 | a01 |
+| `api_design` | 20 | 01, 04, 05, 06, 36, 38, 39, 40, 41 | a06, a07 |
 | `data_viz_review` | 26, 27, 28 | 23, 24, 25 | — |
-| `product_doc` | 29, 30, 31 | 23, 24, 26 | — |
-| `presentation` | 26 | 23-25, 27, 28 | — |
-| `devops` | 32, 17, 19 | 18, 01 | a14, a04 |
-| `ai_ml_design` | 09, 10, 11 | 01, 08 | a01-a10 |
-| `refactoring` | 16, 06, 15 | 04, 12, 14 | — |
-| `observability` | 18, 17, 19 | 32, 01 | a12, a15 |
-| `ux_review` | 23, 24, 25 | 26, 29 | — |
-| `agent_design` | 33 + articles | 09, 11 | a01-a10 |
+| `product_doc` | 29, 30, 31, 37, 40 | 23, 24, 26, 35 | — |
+| `presentation` | 26, 37 | 23-25, 27, 28, 35, 40 | — |
+| `devops` | 32, 17, 19 | 18, 01, 39 | a14, a04 |
+| `ai_ml_design` | 09, 10, 11, 41 | 01, 08, 34, 39, 40 | a01-a10 |
+| `refactoring` | 16, 06, 15 | 04, 12, 14, 36 | — |
+| `observability` | 18, 17, 19 | 32, 01, 38 | a12, a15 |
+| `ux_review` | 23, 24, 25 | 26, 29, 40 | — |
+| `agent_design` | 33 + articles | 09, 11, 38, 39, 41 | a01-a10 |
 
 ## 9. Extensibility
 
@@ -378,7 +378,7 @@ Even without updating any indexes, a new file in `book_research/` is immediately
 - Save this design document as `ARCHITECTURE.md` at the project root
 - Create `knowledge/` directory structure
 - Write `routing.json` with full task → book mapping
-- Write `book_index.json` with all 33 books + 21 articles metadata
+- Write `book_index.json` with all 41 books + 21 articles metadata
 - Write 3 exemplar checklists: `architecture_review.md`, `code_review.md`, `security_audit.md`
 
 ### Phase 2: Claude Code Skills
@@ -425,7 +425,7 @@ Even without updating any indexes, a new file in `book_research/` is immediately
 | File | Purpose |
 |------|---------|
 | `book_research_prompts.md` | Template for new book research — referenced by `add_knowledge_source` |
-| `book_research/*.md` (33 files) | Source of truth — knowledge content |
+| `book_research/*.md` (41 files) | Source of truth — knowledge content |
 | `book_research/anthropic_articles/*.md` (21 files) | Anthropic article content |
 | `knowledge/routing.json` | Task → book mapping (shared by skills + MCP) |
 | `knowledge/book_index.json` | Book/article metadata registry |

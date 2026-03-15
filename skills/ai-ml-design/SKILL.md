@@ -51,3 +51,6 @@ description: >
 - Code execution & filesystem-as-API: `book_research/anthropic_articles/08_code_execution_mcp.md`
 - Think tool for sequential reasoning: `book_research/anthropic_articles/09_think_tool.md`
 - Agent skills & progressive disclosure: `book_research/anthropic_articles/10_agent_skills.md`
+- Prompt caching & cost optimization: `book_research/41_prompt_caching_cross_provider.md`
+- LLM-as-Judge evaluation patterns: `book_research/34_llm_as_judge_evaluation.md`
+- Threat modeling for AI systems: `book_research/39_threat_modeling.md`

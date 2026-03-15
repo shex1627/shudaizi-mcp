@@ -40,3 +40,6 @@ description: >
 - Data consistency & isolation levels: `book_research/01_designing_data_intensive_applications.md`
 - Tool design principles for agents: `book_research/anthropic_articles/06_writing_effective_tools.md`
 - Tool search, programmatic calling, token efficiency: `book_research/anthropic_articles/07_advanced_tool_use.md`
+- Bounded contexts & context mapping: `book_research/36_domain_driven_design.md`
+- Messaging patterns & integration styles: `book_research/38_enterprise_integration_patterns.md`
+- Prompt caching & cost optimization: `book_research/41_prompt_caching_cross_provider.md`

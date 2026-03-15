@@ -51,3 +51,6 @@ description: >
 - AI engineering patterns (evals, RAG, agents): `book_research/09_ai_engineering_chip_huyen.md`
 - LLM pipeline architecture (FTI pattern): `book_research/11_llm_engineers_handbook.md`
 - Consolidated Anthropic blog reference: `book_research/33_anthropic_engineering_blog.md`
+- Messaging patterns for agent communication: `book_research/38_enterprise_integration_patterns.md`
+- Prompt caching & cost optimization: `book_research/41_prompt_caching_cross_provider.md`
+- Threat modeling for agent security: `book_research/39_threat_modeling.md`

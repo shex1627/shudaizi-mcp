@@ -34,7 +34,7 @@ def register_tools(
                 name="get_task_checklist",
                 description=(
                     "Get a curated checklist for a software engineering task. Returns actionable "
-                    "items drawn from 33 books and 21 Anthropic articles, each citing its source.\n\n"
+                    "items drawn from 41 books and 21 Anthropic articles, each citing its source.\n\n"
                     "IMPORTANT: Call this tool proactively in these situations:\n"
                     "- Before writing code that involves async/concurrent I/O, external API calls, "
                     "or new module/class/service design\n"

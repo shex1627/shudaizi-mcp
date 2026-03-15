@@ -1,4 +1,4 @@
-"""Shudaizi MCP Server — software engineering knowledge from 33 books + 21 Anthropic articles."""
+"""Shudaizi MCP Server — software engineering knowledge from 41 books + 21 Anthropic articles."""
 
 from __future__ import annotations
 

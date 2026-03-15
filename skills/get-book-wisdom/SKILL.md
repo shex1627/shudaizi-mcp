@@ -1,7 +1,7 @@
 ---
 name: get-book-wisdom
 description: >
-  Retrieve knowledge from a 33-book + 21-article software engineering research library.
+  Retrieve knowledge from a 41-book + 21-article software engineering research library.
   Covers architecture, security, testing, code quality, AI/ML, UX, data viz, product strategy, DevOps, and more.
   Use when you need principles, patterns, checklists, or tradeoffs for any software engineering topic.
 ---
@@ -46,7 +46,7 @@ Read `knowledge/routing.json` for the full task → book mapping. Available task
 
 ## Book Research Files
 
-All 33 books are in `book_research/` as numbered markdown files (01-33).
+All 41 books are in `book_research/` as numbered markdown files (01-41).
 All 21 Anthropic articles are in `book_research/anthropic_articles/` (01-21).
 Each file contains: Key Ideas, Patterns, Tradeoffs, Pitfalls, Applicability, and Key Framings sections.
 

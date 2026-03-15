@@ -41,3 +41,6 @@ description: >
 - Resilience patterns: `book_research/17_release_it.md`
 - Observability: `book_research/18_observability_engineering.md`
 - SRE practices: `book_research/19_site_reliability_engineering.md`
+- Bounded contexts & ubiquitous language: `book_research/36_domain_driven_design.md`
+- Messaging patterns & async integration: `book_research/38_enterprise_integration_patterns.md`
+- Systematic threat modeling: `book_research/39_threat_modeling.md`

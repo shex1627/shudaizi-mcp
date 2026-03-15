@@ -2,9 +2,9 @@
 name: product-doc
 description: >
   Write or review product documentation, specs, and PRDs using Inspired, Shape Up,
-  Continuous Discovery Habits, Design of Everyday Things, Don't Make Me Think, and
-  Storytelling with Data. Use when drafting PRDs, product briefs, feature specs, or
-  reviewing existing product documents for clarity and completeness.
+  Continuous Discovery Habits, Pyramid Principle, Working Backwards, and more.
+  Use when drafting PRDs, product briefs, feature specs, or reviewing existing product
+  documents for clarity and completeness.
 ---
 
 ## When to Activate
@@ -41,3 +41,6 @@ description: >
 - Signifiers, conceptual models, and error design: `book_research/23_design_of_everyday_things.md`
 - Scanning behavior, visual hierarchy, and trunk test: `book_research/24_dont_make_me_think.md`
 - Data storytelling, Big Idea, and declutter: `book_research/26_storytelling_with_data.md`
+- Pyramid structure, MECE grouping, and SCQ intro: `book_research/37_pyramid_principle.md`
+- PR/FAQ, Working Backwards, and Six-Pager format: `book_research/40_working_backwards.md`
+- Stakeholder navigation & political skills: `book_research/35_agenda_mover.md`
