@@ -1,6 +1,6 @@
 # Shudaizi
 
-A knowledge system that gives AI coding agents (Claude Code, Cursor, Windsurf, Copilot) access to curated software engineering wisdom from 41 books and 21 Anthropic engineering articles — delivered as focused, token-efficient checklists at the moment they're needed.
+A knowledge system that gives AI coding agents (Claude Code, Cursor, Windsurf, Copilot) access to curated software engineering wisdom from 41 research sources and 21 Anthropic engineering articles — delivered as focused, token-efficient checklists at the moment they're needed.
 
 ## The Problem
 
@@ -24,22 +24,22 @@ Two delivery interfaces, one shared knowledge layer. No content duplication.
 
 ## What's Implemented
 
-### Knowledge Base (34 sources)
+### Knowledge Base (41 sources + 21 articles)
 
-32 books + 1 consolidated Anthropic blog + 21 individual Anthropic articles covering:
+41 research documents + 21 individual Anthropic engineering articles covering:
 
-| Domain | Books | Examples |
-|--------|-------|---------|
-| Architecture & System Design | 01-06 | DDIA, Clean Architecture, Philosophy of SW Design |
-| Security | 07-08 | Web App Hacker's Handbook, LLM Security Playbook |
-| AI/ML Engineering | 09-11 | AI Engineering (Huyen), LLM Engineer's Handbook |
+| Domain | Sources | Examples |
+|--------|---------|---------|
+| Architecture & System Design | 01-06, 36, 38 | DDIA, Clean Architecture, Philosophy of SW Design, Domain-Driven Design, Enterprise Integration Patterns |
+| Security | 07-08, 39 | Web App Hacker's Handbook, LLM Security Playbook, Threat Modeling |
+| AI/ML Engineering | 09-11, 34, 41 | AI Engineering (Huyen), LLM Engineer's Handbook, LLM-as-Judge Evaluation, Prompt Caching |
 | Testing | 12-13 | Unit Testing (Khorikov), GOOS |
 | Code Quality | 14-16 | Pragmatic Programmer, Clean Code, Refactoring |
 | Operations & Reliability | 17-19 | Release It!, Observability Engineering, SRE |
 | API & Data | 20-22 | API Design Patterns, Database Internals, Python Concurrency |
 | UX & Design | 23-25 | Design of Everyday Things, Don't Make Me Think, Laws of UX |
 | Data Visualization | 26-28 | Storytelling with Data, Tufte, Wilke |
-| Product & Process | 29-32 | Inspired, Shape Up, Continuous Discovery, DevOps Handbook |
+| Product & Process | 29-32, 35, 37, 40 | Inspired, Shape Up, Continuous Discovery, DevOps Handbook, Agenda Mover, Pyramid Principle, Working Backwards |
 | Anthropic Engineering | 33 + a01-a21 | Agent design, tool design, evals, context engineering |
 
 ### 16 Task-Specific Checklists
@@ -105,10 +105,10 @@ Fixtures are tiered:
 shudaizi/
 ├── knowledge/
 │   ├── routing.json            # task type → book mapping
-│   ├── book_index.json         # metadata for all 34 books + 21 articles
+│   ├── book_index.json         # metadata for all 41 sources + 21 articles
 │   └── checklists/             # 16 task-specific checklists
 ├── skills/                     # 17 Claude Code skill definitions
-├── book_research/              # 34 source documents (32 books + Anthropic blog + LLM eval)
+├── book_research/              # 41 source documents (books + research syntheses + Anthropic blog)
 │   └── anthropic_articles/     # 21 individual Anthropic engineering articles
 ├── mcp_server/                 # Python MCP server (5 tools)
 │   └── src/shudaizi_mcp/
